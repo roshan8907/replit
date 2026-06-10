@@ -17,4 +17,9 @@ export default defineConfig({
     port: parseInt(process.env.PORT) || 3000,
     host: '0.0.0.0',
   },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });
