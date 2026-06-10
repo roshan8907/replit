@@ -14,11 +14,23 @@ if (!categoryData) return Astro.redirect('/categories');
 
 const quizQuestions = categoryData.questions;
 const questionsJson = JSON.stringify(quizQuestions);
+
+const categoryBg: Record<string, string> = {
+  'general-knowledge': 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
+  'science-nature':    'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80',
+  'history':           'https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=800&q=80',
+  'geography':         'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80',
+  'entertainment':     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80',
+  'sports':            'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80',
+  'technology':        'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+  'food-drink':        'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800&q=80',
+};
+const heroBg = categoryBg[category] || categoryBg['general-knowledge'];
 ---
 
 <Layout
   title={`${categoryData.name} Trivia Quiz — 10 Questions | QuizZone`}
-  description={`Play the ${categoryData.name} quiz on QuizZone. ${categoryData.description} 10 questions with timer and instant scoring — free!`}
+  description={`Play the ${categoryData.name} quiz on QuizZone. ${categoryData.description} 10 questions with timer and instant scoring — free, no sign-up!`}
 >
   <Header />
 
@@ -32,28 +44,38 @@ const questionsJson = JSON.stringify(quizQuestions);
         <span>›</span>
         <a href="/categories" style="color:#92733a;font-weight:600;">Categories</a>
         <span>›</span>
-        <span style="color:#5b4220;font-weight:700;">{categoryData.name}</span>
+        <span style="font-weight:700;">{categoryData.name}</span>
       </div>
 
-      <div style="background:white;border-radius:20px;padding:28px 20px 24px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
-        <div style="font-size:56px;margin-bottom:14px;">{categoryData.icon}</div>
-        <h1 style="font-size:24px;font-weight:900;color:#1a1040;margin-bottom:8px;">{categoryData.name} Quiz</h1>
-        <p style="font-size:14px;color:#6b7280;max-width:320px;margin:0 auto 24px;line-height:1.6;">{categoryData.description}</p>
-
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px;">
-          {[['❓','10 Questions'],['⏱️','30 sec / Q'],['🏆','Score tracking'],['💡','Explanations']].map(([ic,lb]) => (
-            <div style="background:#f3f4f6;border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:#374151;display:flex;align-items:center;gap:5px;">
-              <span>{ic}</span><span>{lb}</span>
-            </div>
-          ))}
+      <!-- Hero with background image -->
+      <div style="border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.2);margin-bottom:16px;position:relative;">
+        <img src={heroBg} alt={`${categoryData.name} trivia quiz`} loading="eager"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+        <div style="position:absolute;inset:0;background:rgba(10,5,40,0.72);"></div>
+        <div style="position:relative;padding:32px 20px 28px;text-align:center;">
+          <div style="font-size:54px;margin-bottom:12px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));">{categoryData.icon}</div>
+          <h1 style="font-size:26px;font-weight:900;color:white;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.5);">{categoryData.name} Quiz</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.75);max-width:320px;margin:0 auto 24px;line-height:1.6;">{categoryData.description}</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:24px;">
+            {[['❓','10 Questions'],['⏱️','30 sec / Q'],['🏆','Score tracking'],['💡','Explanations']].map(([ic,lb]) => (
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:white;display:flex;align-items:center;gap:5px;border:1px solid rgba(255,255,255,0.2);">
+                <span>{ic}</span><span>{lb}</span>
+              </div>
+            ))}
+          </div>
+          <button id="start-btn"
+            style="width:100%;padding:16px;background:#ffe66d;color:#1a1040;font-size:16px;font-weight:900;border-radius:100px;border:none;cursor:pointer;transition:all 0.15s;letter-spacing:0.2px;box-shadow:0 4px 14px rgba(255,230,109,0.4);"
+            onmouseover="this.style.background='#ffd93d';this.style.transform='translateY(-1px)';"
+            onmouseout="this.style.background='#ffe66d';this.style.transform='translateY(0)';">
+            ▶ Start Quiz
+          </button>
         </div>
+      </div>
 
-        <button id="start-btn"
-          style="width:100%;padding:16px;background:#1a1040;color:white;font-size:16px;font-weight:800;border-radius:100px;border:none;cursor:pointer;transition:all 0.15s;letter-spacing:0.2px;"
-          onmouseover="this.style.background='#2d1b69';this.style.transform='translateY(-1px)';"
-          onmouseout="this.style.background='#1a1040';this.style.transform='translateY(0)';">
-          Start Quiz ▶
-        </button>
+      <!-- SEO description block -->
+      <div style="background:white;border-radius:16px;padding:18px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <h2 style="font-size:15px;font-weight:800;color:#1a1040;margin-bottom:8px;">About this quiz</h2>
+        <p style="font-size:13px;color:#6b7280;line-height:1.7;">{categoryData.description} This quiz contains 10 carefully curated questions with a 30-second timer per question. Get instant explanations after each answer — completely free, no sign-up required.</p>
       </div>
     </div>
 
@@ -61,13 +83,13 @@ const questionsJson = JSON.stringify(quizQuestions);
     <div id="quiz" style="display:none;" class="fade-in">
       <div style="background:white;border-radius:20px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
 
-        <!-- Top: Question counter + Timer -->
+        <!-- Top bar -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
           <div style="display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#1a1040;">
             <span id="q-icon" style="font-size:16px;">{categoryData.icon}</span>
             <span>Question <span id="q-num">1</span>/10</span>
           </div>
-          <div id="timer-pill" style="background:#1a1040;color:white;font-size:13px;font-weight:800;padding:6px 14px;border-radius:100px;display:flex;align-items:center;gap:5px;">
+          <div id="timer-pill" style="background:#1a1040;color:white;font-size:13px;font-weight:800;padding:6px 14px;border-radius:100px;display:flex;align-items:center;gap:5px;min-width:70px;justify-content:center;transition:background 0.3s;">
             ⏱ <span id="timer-val">30</span>s
           </div>
         </div>
@@ -89,37 +111,29 @@ const questionsJson = JSON.stringify(quizQuestions);
           <p id="explain-txt" style="font-size:13px;color:#15803d;line-height:1.6;"></p>
         </div>
 
-        <!-- Nav buttons -->
+        <!-- Nav -->
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
           <button id="prev-btn"
-            style="flex:1;padding:13px;background:white;border:2px solid #e5e7eb;border-radius:100px;font-size:14px;font-weight:700;color:#6b7280;cursor:pointer;transition:all 0.15s;"
-            disabled
-            onmouseover="if(!this.disabled){this.style.borderColor='#1a1040';this.style.color='#1a1040';}"
-            onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#6b7280';">
+            style="flex:1;padding:13px;background:white;border:2px solid #e5e7eb;border-radius:100px;font-size:14px;font-weight:700;color:#9ca3af;cursor:pointer;transition:all 0.15s;"
+            disabled>
             ← Previous
           </button>
           <button id="next-btn"
             style="display:none;flex:1;padding:13px;background:#ffe66d;border:none;border-radius:100px;font-size:14px;font-weight:800;color:#1a1040;cursor:pointer;transition:all 0.15s;"
-            onmouseover="this.style.background='#ffd93d';"
-            onmouseout="this.style.background='#ffe66d';">
+            onmouseover="this.style.background='#ffd93d';" onmouseout="this.style.background='#ffe66d';">
             Next →
           </button>
           <button id="finish-btn"
             style="display:none;flex:1;padding:13px;background:#22c55e;border:none;border-radius:100px;font-size:14px;font-weight:800;color:white;cursor:pointer;transition:all 0.15s;"
-            onmouseover="this.style.background='#16a34a';"
-            onmouseout="this.style.background='#22c55e';">
+            onmouseover="this.style.background='#16a34a';" onmouseout="this.style.background='#22c55e';">
             Finish ✓
           </button>
         </div>
       </div>
 
       <!-- In-content Ad -->
-      <div style="background:#ffd93d;border-radius:16px;padding:50px 16px;margin-top:16px;text-align:center;font-size:13px;font-weight:600;color:#92733a;">
-        [IN-CONTENT AD]
-      </div>
-      <div style="background:#ffd93d;border-radius:16px;padding:50px 16px;margin-top:12px;text-align:center;font-size:13px;font-weight:600;color:#92733a;">
-        [FOOTER AD]
-      </div>
+      <div style="background:#ffd93d;border-radius:16px;padding:50px 16px;margin-top:16px;text-align:center;font-size:13px;font-weight:600;color:#92733a;">[IN-CONTENT AD]</div>
+      <div style="background:#ffd93d;border-radius:16px;padding:50px 16px;margin-top:12px;text-align:center;font-size:13px;font-weight:600;color:#92733a;">[FOOTER AD]</div>
     </div>
 
     <!-- RESULTS -->
@@ -128,46 +142,18 @@ const questionsJson = JSON.stringify(quizQuestions);
         <div id="res-emoji" style="font-size:60px;margin-bottom:12px;">🏆</div>
         <h2 style="font-size:24px;font-weight:900;color:#1a1040;margin-bottom:6px;">Quiz Complete!</h2>
         <p id="res-msg" style="font-size:14px;color:#6b7280;margin-bottom:24px;"></p>
-
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px;" id="stats-grid">
-          <div style="background:#f5f3ff;border-radius:14px;padding:16px;">
-            <div id="res-score" style="font-size:28px;font-weight:900;color:#7c3aed;"></div>
-            <div style="font-size:11px;font-weight:700;color:#7c3aed;margin-top:2px;">POINTS</div>
-          </div>
-          <div style="background:#f0fdf4;border-radius:14px;padding:16px;">
-            <div id="res-correct" style="font-size:28px;font-weight:900;color:#16a34a;"></div>
-            <div style="font-size:11px;font-weight:700;color:#16a34a;margin-top:2px;">CORRECT</div>
-          </div>
-          <div style="background:#fef2f2;border-radius:14px;padding:16px;">
-            <div id="res-wrong" style="font-size:28px;font-weight:900;color:#dc2626;"></div>
-            <div style="font-size:11px;font-weight:700;color:#dc2626;margin-top:2px;">WRONG</div>
-          </div>
-          <div style="background:#fefce8;border-radius:14px;padding:16px;">
-            <div id="res-pct" style="font-size:28px;font-weight:900;color:#ca8a04;"></div>
-            <div style="font-size:11px;font-weight:700;color:#ca8a04;margin-top:2px;">ACCURACY</div>
-          </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px;">
+          <div style="background:#f5f3ff;border-radius:14px;padding:16px;"><div id="res-score" style="font-size:28px;font-weight:900;color:#7c3aed;"></div><div style="font-size:11px;font-weight:700;color:#7c3aed;margin-top:2px;">POINTS</div></div>
+          <div style="background:#f0fdf4;border-radius:14px;padding:16px;"><div id="res-correct" style="font-size:28px;font-weight:900;color:#16a34a;"></div><div style="font-size:11px;font-weight:700;color:#16a34a;margin-top:2px;">CORRECT</div></div>
+          <div style="background:#fef2f2;border-radius:14px;padding:16px;"><div id="res-wrong" style="font-size:28px;font-weight:900;color:#dc2626;"></div><div style="font-size:11px;font-weight:700;color:#dc2626;margin-top:2px;">WRONG</div></div>
+          <div style="background:#fefce8;border-radius:14px;padding:16px;"><div id="res-pct" style="font-size:28px;font-weight:900;color:#ca8a04;"></div><div style="font-size:11px;font-weight:700;color:#ca8a04;margin-top:2px;">ACCURACY</div></div>
         </div>
-
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <button id="again-btn"
-            style="width:100%;padding:15px;background:#1a1040;color:white;font-size:15px;font-weight:800;border-radius:100px;border:none;cursor:pointer;transition:background 0.15s;"
-            onmouseover="this.style.background='#2d1b69';" onmouseout="this.style.background='#1a1040';">
-            🔄 Play Again
-          </button>
-          <a href="/categories"
-            style="width:100%;padding:15px;background:#ffe66d;color:#1a1040;font-size:15px;font-weight:800;border-radius:100px;text-align:center;display:block;transition:background 0.15s;"
-            onmouseover="this.style.background='#ffd93d';" onmouseout="this.style.background='#ffe66d';">
-            🎯 Try Another Quiz
-          </a>
-          <button id="share-btn"
-            style="width:100%;padding:15px;background:white;border:2px solid #e5e7eb;color:#1a1040;font-size:15px;font-weight:800;border-radius:100px;cursor:pointer;transition:all 0.15s;"
-            onmouseover="this.style.borderColor='#1a1040';" onmouseout="this.style.borderColor='#e5e7eb';">
-            🔗 Share Score
-          </button>
+          <button id="again-btn" style="width:100%;padding:15px;background:#1a1040;color:white;font-size:15px;font-weight:800;border-radius:100px;border:none;cursor:pointer;" onmouseover="this.style.background='#2d1b69';" onmouseout="this.style.background='#1a1040';">🔄 Play Again (new questions)</button>
+          <a href="/categories" style="width:100%;padding:15px;background:#ffe66d;color:#1a1040;font-size:15px;font-weight:800;border-radius:100px;text-align:center;display:block;" onmouseover="this.style.background='#ffd93d';" onmouseout="this.style.background='#ffe66d';">🎯 Try Another Quiz</a>
+          <button id="share-btn" style="width:100%;padding:15px;background:white;border:2px solid #e5e7eb;color:#1a1040;font-size:15px;font-weight:800;border-radius:100px;cursor:pointer;" onmouseover="this.style.borderColor='#1a1040';" onmouseout="this.style.borderColor='#e5e7eb';">🔗 Share Score</button>
         </div>
       </div>
-
-      <!-- Review -->
       <div style="background:white;border-radius:20px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
         <h3 style="font-size:17px;font-weight:800;color:#1a1040;margin-bottom:16px;">Answer Review</h3>
         <div id="review" style="display:flex;flex-direction:column;gap:10px;"></div>
@@ -175,18 +161,123 @@ const questionsJson = JSON.stringify(quizQuestions);
     </div>
 
   </main>
-
   <Footer />
 </Layout>
 
 <script define:vars={{ questionsJson, categoryName: categoryData.name }}>
-  const QS = JSON.parse(questionsJson);
+  const ALL_QS = JSON.parse(questionsJson);
   const TOTAL = 10;
   const TIME = 30;
 
+  // ── Sound engine ──────────────────────────────────────────────────────────
+  let audioCtx = null;
+  function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function playSound(type) {
+    try {
+      const ctx = getAudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+
+      const now = ctx.currentTime;
+
+      if (type === 'correct') {
+        // Happy ascending arpeggio
+        [[523,0],[659,0.1],[784,0.2],[1047,0.32]].forEach(([freq, t]) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sine';
+          o.frequency.value = freq;
+          g.gain.setValueAtTime(0, now + t);
+          g.gain.linearRampToValueAtTime(0.28, now + t + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.001, now + t + 0.25);
+          o.start(now + t); o.stop(now + t + 0.3);
+        });
+      } else if (type === 'wrong') {
+        // Descending buzz
+        [[300,0],[220,0.08],[160,0.18]].forEach(([freq, t]) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sawtooth';
+          o.frequency.value = freq;
+          g.gain.setValueAtTime(0.25, now + t);
+          g.gain.exponentialRampToValueAtTime(0.001, now + t + 0.18);
+          o.start(now + t); o.stop(now + t + 0.22);
+        });
+      } else if (type === 'tick') {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.type = 'sine';
+        o.frequency.value = 900;
+        g.gain.setValueAtTime(0.12, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+        o.start(now); o.stop(now + 0.08);
+      } else if (type === 'urgent') {
+        // Fast double beep for last 5s
+        [0, 0.12].forEach(t => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'square';
+          o.frequency.value = 640;
+          g.gain.setValueAtTime(0.15, now + t);
+          g.gain.exponentialRampToValueAtTime(0.001, now + t + 0.08);
+          o.start(now + t); o.stop(now + t + 0.1);
+        });
+      } else if (type === 'finish') {
+        // Victory fanfare
+        [[392,0],[523,0.12],[659,0.24],[784,0.36],[1047,0.5]].forEach(([freq, t]) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sine';
+          o.frequency.value = freq;
+          g.gain.setValueAtTime(0, now + t);
+          g.gain.linearRampToValueAtTime(0.25, now + t + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.001, now + t + 0.35);
+          o.start(now + t); o.stop(now + t + 0.4);
+        });
+      }
+    } catch(e) { /* silently ignore audio errors */ }
+  }
+
+  // ── Question shuffling ────────────────────────────────────────────────────
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Shuffles options and returns remapped correct index
+  function shuffleOptions(q) {
+    const indexed = q.options.map((opt, i) => ({ opt, correct: i === q.correct }));
+    const shuffled = shuffle(indexed);
+    return {
+      ...q,
+      options: shuffled.map(x => x.opt),
+      correct: shuffled.findIndex(x => x.correct),
+    };
+  }
+
+  function buildSession() {
+    // Pick 10 shuffled questions, each with shuffled options
+    return shuffle(ALL_QS).slice(0, TOTAL).map(shuffleOptions);
+  }
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  let QS = buildSession();
   let idx = 0, score = 0, timeLeft = TIME, timerInt = null, startMs = 0;
   let answers = Array(TOTAL).fill(null);
 
+  // ── DOM refs ──────────────────────────────────────────────────────────────
   const introEl   = document.getElementById('intro');
   const quizEl    = document.getElementById('quiz');
   const resEl     = document.getElementById('results');
@@ -209,10 +300,13 @@ const questionsJson = JSON.stringify(quizQuestions);
   function show(el) { el.style.display = 'block'; }
   function hide(el) { el.style.display = 'none'; }
 
+  // Unlock audio on first user interaction
+  document.addEventListener('click', () => {
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  }, { once: true });
+
   startBtn.addEventListener('click', () => {
-    hide(introEl); show(quizEl);
-    startMs = Date.now();
-    render();
+    hide(introEl); show(quizEl); startMs = Date.now(); render();
   });
 
   function render() {
@@ -226,7 +320,7 @@ const questionsJson = JSON.stringify(quizQuestions);
     q.options.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.textContent = opt;
-      btn.style.cssText = getStyle(i, done, q.correct, answers[idx]);
+      btn.style.cssText = getOptStyle(i, done, q.correct, answers[idx]);
       if (!done) {
         btn.addEventListener('click', () => pick(i));
         btn.addEventListener('mouseenter', () => { if (answers[idx] === null) btn.style.background = '#2d1b69'; });
@@ -237,23 +331,22 @@ const questionsJson = JSON.stringify(quizQuestions);
 
     if (done) {
       explainTxt.textContent = q.explanation;
-      show(explain);
-      stopTimer();
+      show(explain); stopTimer();
     } else {
-      hide(explain);
-      startTimer();
+      hide(explain); startTimer();
     }
 
     prevBtn.disabled = idx === 0;
-    prevBtn.style.opacity = idx === 0 ? '0.4' : '1';
+    prevBtn.style.opacity = idx === 0 ? '0.35' : '1';
+    prevBtn.style.color = idx === 0 ? '#9ca3af' : '#1a1040';
     nextBtn.style.display = (done && idx < TOTAL - 1) ? 'block' : 'none';
     finishBtn.style.display = (done && idx === TOTAL - 1) ? 'block' : 'none';
   }
 
-  function getStyle(i, done, correct, picked) {
-    const base = 'width:100%;padding:15px 18px;border-radius:100px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background 0.15s;text-align:center;';
+  function getOptStyle(i, done, correct, picked) {
+    const base = 'width:100%;padding:15px 18px;border-radius:100px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background 0.18s;text-align:center;letter-spacing:0.1px;';
     if (!done) return base + 'background:#1a1040;color:white;';
-    if (i === correct) return base + 'background:#22c55e;color:white;cursor:default;';
+    if (i === correct) return base + 'background:#22c55e;color:white;cursor:default;transform:scale(1.01);';
     if (i === picked && i !== correct) return base + 'background:#ef4444;color:white;cursor:default;';
     return base + 'background:#e5e7eb;color:#9ca3af;cursor:default;';
   }
@@ -263,7 +356,12 @@ const questionsJson = JSON.stringify(quizQuestions);
     stopTimer();
     const q = QS[idx];
     answers[idx] = i;
-    if (i === q.correct) score += Math.max(1, timeLeft * 3);
+    if (i === q.correct) {
+      score += Math.max(5, timeLeft * 3);
+      playSound('correct');
+    } else {
+      playSound('wrong');
+    }
     render();
   }
 
@@ -274,6 +372,9 @@ const questionsJson = JSON.stringify(quizQuestions);
     timerInt = setInterval(() => {
       timeLeft--;
       updateTimer();
+      // Sound cues
+      if (timeLeft <= 5 && timeLeft > 0) playSound('urgent');
+      else if (timeLeft <= 10 && timeLeft > 5) playSound('tick');
       if (timeLeft <= 0) { stopTimer(); pick(-1); }
     }, 1000);
   }
@@ -282,7 +383,14 @@ const questionsJson = JSON.stringify(quizQuestions);
 
   function updateTimer() {
     timerVal.textContent = timeLeft;
-    timerPill.style.background = timeLeft > 15 ? '#1a1040' : timeLeft > 7 ? '#d97706' : '#ef4444';
+    if (timeLeft > 15) {
+      timerPill.style.background = '#1a1040';
+    } else if (timeLeft > 7) {
+      timerPill.style.background = '#d97706';
+    } else {
+      timerPill.style.background = '#ef4444';
+      timerPill.style.animation = timeLeft <= 5 ? 'pulse 0.5s ease infinite' : 'none';
+    }
   }
 
   prevBtn.addEventListener('click', () => { if (idx > 0) { stopTimer(); idx--; render(); } });
@@ -291,10 +399,9 @@ const questionsJson = JSON.stringify(quizQuestions);
 
   function showResults() {
     stopTimer();
-    const elapsed = Math.round((Date.now() - startMs) / 1000);
+    playSound('finish');
     const correct = answers.filter((a, i) => a === QS[i].correct).length;
     const pct = Math.round(correct / TOTAL * 100);
-
     hide(quizEl); show(resEl);
 
     document.getElementById('res-score').textContent = score;
@@ -317,7 +424,9 @@ const questionsJson = JSON.stringify(quizQuestions);
     });
   }
 
+  // Play Again — build a NEW shuffled session
   againBtn.addEventListener('click', () => {
+    QS = buildSession();
     idx = 0; score = 0; answers = Array(TOTAL).fill(null); startMs = Date.now();
     hide(resEl); show(quizEl); render();
   });
@@ -333,3 +442,10 @@ const questionsJson = JSON.stringify(quizQuestions);
     });
   });
 </script>
+
+<style>
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+</style>
