@@ -8,21 +8,9 @@ const categories = Object.entries(questions).map(([slug, cat]) => ({
   slug,
   name: cat.name,
   icon: cat.icon,
-  color: cat.color,
   description: cat.description,
-  quizCount: cat.questions.length,
+  count: cat.questions.length,
 }));
-
-const popularQuizzes = [
-  { name: 'General Knowledge Quiz 1', slug: 'general-knowledge', difficulty: 'Easy' },
-  { name: 'Science & Nature Basics', slug: 'science-nature', difficulty: 'Medium' },
-  { name: 'World History Challenge', slug: 'history', difficulty: 'Hard' },
-  { name: 'Geography Master', slug: 'geography', difficulty: 'Medium' },
-  { name: 'Sports Legends', slug: 'sports', difficulty: 'Easy' },
-  { name: 'Tech & Computers', slug: 'technology', difficulty: 'Medium' },
-  { name: 'Food & Cuisine', slug: 'food-drink', difficulty: 'Easy' },
-  { name: 'Entertainment Trivia', slug: 'entertainment', difficulty: 'Easy' },
-];
 
 const gradients: Record<string, string> = {
   'general-knowledge': 'linear-gradient(135deg,#3b82f6,#1d4ed8)',
@@ -36,183 +24,76 @@ const gradients: Record<string, string> = {
 };
 ---
 
-<Layout title="Free Online Trivia Quizzes | QuizZone" description="Play free online trivia quizzes on QuizZone. Choose from General Knowledge, History, Science, Geography, Sports and more. 10 questions per quiz with instant scoring!">
+<Layout
+  title="Free Online Trivia Quizzes | QuizZone"
+  description="Play free online trivia quizzes on QuizZone. Choose from General Knowledge, History, Science, Geography, Sports and more — 10 questions, instant scoring, completely free."
+>
   <Header />
 
-  <!-- Top Ad Banner -->
-  <div style="background:#e8eaf0;border-bottom:1px solid #d1d5db;">
-    <div style="max-width:1200px;margin:0 auto;padding:8px 16px;text-align:center;">
-      <div style="border:1px dashed #9ca3af;border-radius:6px;padding:12px;font-size:12px;color:#6b7280;background:white;">
-        [Advertisement — Top Banner 728×90]
+  <!-- Top Ad -->
+  <div style="background:#f0f2f5;border-bottom:1px solid #e5e7eb;">
+    <div style="max-width:960px;margin:0 auto;padding:8px 16px;">
+      <div style="border:1px dashed #d1d5db;border-radius:6px;padding:10px;text-align:center;font-size:11px;color:#9ca3af;background:white;">
+        [Advertisement — 728×90]
       </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <div style="background:linear-gradient(135deg,#2d1b69 0%,#1e0a4e 60%,#0f0528 100%);color:white;padding:36px 16px;">
-    <div style="max-width:1200px;margin:0 auto;text-align:center;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:18px;">
-        <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-ring 2s infinite;"></span>
-        {categories.length * 10}+ free questions available
-      </div>
-      <h1 style="font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;">
-        The Best Free Online<br/><span style="color:#c084fc;">Trivia Quiz</span> Site
-      </h1>
-      <p style="font-size:clamp(14px,2.5vw,18px);color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 24px;">
-        Test your knowledge across {categories.length} categories. New quizzes added regularly — all completely free!
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-        <a href="/categories" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#a855f7,#7c3aed);color:white;font-weight:800;font-size:16px;border-radius:10px;box-shadow:0 6px 20px rgba(124,58,237,0.45);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" /></svg>
-          Start Playing Now
-        </a>
-        <a href="#categories" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;font-weight:600;font-size:15px;border-radius:10px;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
-          Browse Categories ↓
-        </a>
-      </div>
+  <!-- Page header -->
+  <div style="background:linear-gradient(135deg,#2d1b69,#1e0a4e);padding:36px 16px 32px;text-align:center;">
+    <h1 style="font-size:clamp(26px,5vw,42px);font-weight:900;color:white;letter-spacing:-0.5px;margin-bottom:10px;line-height:1.2;">
+      Free Online <span style="color:#c084fc;">Trivia Quizzes</span>
+    </h1>
+    <p style="font-size:15px;color:rgba(255,255,255,0.65);max-width:440px;margin:0 auto;">
+      Pick a category below and test your knowledge — 10 questions, timed, 100% free.
+    </p>
+  </div>
 
-      <!-- Stats row -->
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
-        {[['100+','Free Quizzes'],['8','Categories'],['50K+','Players'],['800+','Questions']].map(([val,lab]) => (
-          <div style="text-align:center;">
-            <div style="font-size:24px;font-weight:900;color:white;">{val}</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;">{lab}</div>
+  <!-- Categories grid -->
+  <main style="max-width:960px;margin:0 auto;padding:28px 16px 48px;">
+    <h2 style="font-size:13px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">
+      Quiz Categories
+    </h2>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;" class="cat-grid">
+      {categories.map((cat) => (
+        <a
+          href={`/quiz/${cat.slug}`}
+          style={`display:block;border-radius:12px;overflow:hidden;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);transition:all 0.18s;text-decoration:none;`}
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.13)';"
+          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 4px rgba(0,0,0,0.08)';"
+        >
+          <!-- Gradient image area with icon -->
+          <div style={`height:110px;background:${gradients[cat.slug] || 'linear-gradient(135deg,#6366f1,#4338ca)'};display:flex;align-items:center;justify-content:center;font-size:48px;`}>
+            {cat.icon}
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-
-  <!-- Main 2-column layout -->
-  <div style="max-width:1200px;margin:0 auto;padding:28px 16px;display:grid;grid-template-columns:1fr;gap:24px;" id="categories" class="main-grid">
-
-    <!-- LEFT: Categories -->
-    <div>
-      <!-- Section title -->
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-        <div style="width:4px;height:28px;background:linear-gradient(180deg,#a855f7,#6c35d3);border-radius:2px;"></div>
-        <h2 style="font-size:20px;font-weight:800;color:#111827;">Quiz Categories</h2>
-      </div>
-
-      <!-- Category grid -->
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;" class="cat-grid">
-        {categories.map((cat) => (
-          <a
-            href={`/quiz/${cat.slug}`}
-            style={`position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:${gradients[cat.slug] || 'linear-gradient(135deg,#6366f1,#4338ca)'};box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all 0.2s;text-decoration:none;`}
-            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.2)';"
-            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)';"
-          >
-            <!-- Icon centered -->
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:28px;">
-              <span style="font-size:clamp(36px,6vw,56px);filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));">{cat.icon}</span>
+          <!-- Card info -->
+          <div style="padding:12px 14px 14px;">
+            <div style="font-size:15px;font-weight:800;color:#111827;margin-bottom:3px;">{cat.name}</div>
+            <div style="font-size:12px;color:#6b7280;line-height:1.5;margin-bottom:8px;">{cat.description}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:12px;color:#9ca3af;font-weight:500;">{cat.count} Questions</span>
+              <span style="font-size:12px;font-weight:700;color:#7c3aed;">Play →</span>
             </div>
-            <!-- Dark overlay + name at bottom -->
-            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 100%);padding:24px 12px 12px;">
-              <div style="font-size:14px;font-weight:800;color:white;text-shadow:0 1px 4px rgba(0,0,0,0.5);">{cat.name}</div>
-              <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;">{cat.quizCount} questions</div>
-            </div>
-          </a>
-        ))}
-      </div>
-
-      <!-- Ad between content -->
-      <div style="margin-top:24px;border:1px dashed #d1d5db;border-radius:8px;padding:14px;text-align:center;font-size:12px;color:#9ca3af;background:white;">
-        [Advertisement — Rectangle 300×250]
-      </div>
-
-      <!-- How to Play -->
-      <div style="margin-top:24px;background:white;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
-        <h3 style="font-size:16px;font-weight:800;color:#111827;margin-bottom:16px;">How to Play</h3>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          {[['🎯','Pick a Category','Choose from 8 quiz topics above'],['⚡','Answer Questions','10 questions, 30 seconds each'],['🏆','See Your Score','Get instant results and detailed explanations']].map(([icon,title,desc]) => (
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="font-size:20px;flex-shrink:0;margin-top:1px;">{icon}</div>
-              <div>
-                <div style="font-size:14px;font-weight:700;color:#1f2937;">{title}</div>
-                <div style="font-size:13px;color:#6b7280;margin-top:2px;">{desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </a>
+      ))}
     </div>
 
-    <!-- RIGHT: Sidebar -->
-    <div class="sidebar">
-      <!-- Popular Quizzes -->
-      <div style="background:white;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:18px;">
-        <h3 style="font-size:15px;font-weight:800;color:#111827;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:18px;">🔥</span> Popular Quizzes
-        </h3>
-        <div style="display:flex;flex-direction:column;gap:2px;">
-          {popularQuizzes.map((q, i) => (
-            <a
-              href={`/quiz/${q.slug}`}
-              style="display:flex;align-items:center;justify-content:space-between;padding:10px 8px;border-radius:8px;transition:background 0.15s;color:#1f2937;"
-              onmouseover="this.style.background='#f3f4f6'"
-              onmouseout="this.style.background='transparent'"
-            >
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span style="width:22px;height:22px;background:linear-gradient(135deg,#a855f7,#6c35d3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:white;flex-shrink:0;">{i + 1}</span>
-                <span style="font-size:13px;font-weight:600;">{q.name}</span>
-              </div>
-              <span style={`font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;flex-shrink:0;${q.difficulty === 'Easy' ? 'background:#dcfce7;color:#16a34a;' : q.difficulty === 'Hard' ? 'background:#fee2e2;color:#dc2626;' : 'background:#fef3c7;color:#d97706;'}`}>{q.difficulty}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Sidebar Ad -->
-      <div style="border:1px dashed #d1d5db;border-radius:8px;padding:14px;text-align:center;font-size:12px;color:#9ca3af;background:white;margin-bottom:18px;min-height:250px;display:flex;align-items:center;justify-content:center;">
-        [Advertisement — Sidebar 300×250]
-      </div>
-
-      <!-- Latest from Blog -->
-      <div style="background:white;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
-        <h3 style="font-size:15px;font-weight:800;color:#111827;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:18px;">📝</span> Latest Articles
-        </h3>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          {[
-            {title:'Best General Knowledge Quiz Questions for 2025',slug:'best-general-knowledge-questions',date:'Jun 1'},
-            {title:'Top 20 Geography Quiz Questions You Must Try',slug:'top-geography-quiz-questions',date:'May 20'},
-            {title:'Science Questions Every Student Should Know',slug:'science-quiz-for-students',date:'May 8'},
-          ].map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              style="display:flex;align-items:flex-start;gap:10px;padding:8px;border-radius:8px;transition:background 0.15s;color:#1f2937;"
-              onmouseover="this.style.background='#f9fafb'"
-              onmouseout="this.style.background='transparent'"
-            >
-              <div style="width:40px;height:40px;background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;">📖</div>
-              <div>
-                <div style="font-size:13px;font-weight:600;line-height:1.4;color:#1f2937;">{post.title}</div>
-                <div style="font-size:11px;color:#9ca3af;margin-top:3px;">{post.date}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-        <a href="/blog" style="display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:700;color:#7c3aed;padding:8px;border-radius:8px;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">View all articles →</a>
-      </div>
+    <!-- Bottom Ad -->
+    <div style="margin-top:32px;border:1px dashed #d1d5db;border-radius:8px;padding:12px;text-align:center;font-size:11px;color:#9ca3af;background:white;">
+      [Advertisement — 728×90]
     </div>
-  </div>
+  </main>
 
   <Footer />
 </Layout>
 
 <style>
-  @media (min-width: 900px) {
-    .main-grid {
-      grid-template-columns: 1fr 300px !important;
-    }
-    .cat-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
+  @media (min-width: 540px) {
+    .cat-grid { grid-template-columns: repeat(3, 1fr) !important; }
   }
-  @media (min-width: 600px) and (max-width: 899px) {
-    .cat-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
+  @media (min-width: 800px) {
+    .cat-grid { grid-template-columns: repeat(4, 1fr) !important; }
   }
 </style>
