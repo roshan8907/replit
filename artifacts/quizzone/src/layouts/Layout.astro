@@ -5,14 +5,12 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
 }
-
 const {
   title,
-  description = 'Free online trivia quizzes covering general knowledge, history, science, geography, entertainment, sports, and more. Play QuizZone now!',
+  description = 'Free online trivia quizzes — General Knowledge, History, Science, Geography, Sports and more. Play QuizZone now!',
   canonical,
   noindex = false,
 } = Astro.props;
-
 const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title.includes('QuizZone') ? title : `${title} | QuizZone`;
 ---
@@ -23,7 +21,7 @@ const fullTitle = title.includes('QuizZone') ? title : `${title} | QuizZone`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
+  {noindex ? <meta name="robots" content="noindex,nofollow"/> : <meta name="robots" content="index,follow"/>}
   <link rel="canonical" href={canonicalURL} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
@@ -36,28 +34,16 @@ const fullTitle = title.includes('QuizZone') ? title : `${title} | QuizZone`;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style is:global>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #f0f2f5;
-      color: #111827;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-    button { cursor: pointer; font-family: inherit; }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #e5e7eb; }
-    ::-webkit-scrollbar-thumb { background: #6c35d3; border-radius: 10px; }
-
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    @keyframes pulse-ring { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
-    .animate-fade-in { animation: fadeIn 0.3s ease both; }
-    .animate-pop-in { animation: popIn 0.25s ease both; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:#ffe66d;color:#1a1040;min-height:100vh;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    button{cursor:pointer;font-family:inherit;border:none;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes popIn{from{opacity:0;transform:scale(0.94)}to{opacity:1;transform:scale(1)}}
+    .fade-in{animation:fadeIn 0.3s ease both;}
+    .pop-in{animation:popIn 0.25s ease both;}
   </style>
 </head>
 <body>
