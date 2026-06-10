@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /_astro/
+
+Sitemap: https://quizzone.replit.app/sitemap-index.xml

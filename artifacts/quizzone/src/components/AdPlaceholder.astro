@@ -1,0 +1,24 @@
+---
+interface Props {
+  type?: 'banner' | 'leaderboard' | 'sidebar' | 'content' | 'footer';
+  class?: string;
+}
+
+const { type = 'banner', class: className = '' } = Astro.props;
+
+const sizes = {
+  banner: { label: 'Top Banner Ad (728×90)', height: 'h-24', width: 'w-full' },
+  leaderboard: { label: 'Leaderboard Ad (970×90)', height: 'h-24', width: 'w-full' },
+  sidebar: { label: 'Sidebar Ad (300×250)', height: 'h-64', width: 'w-full max-w-xs' },
+  content: { label: 'In-Content Ad (336×280)', height: 'h-48', width: 'w-full max-w-sm' },
+  footer: { label: 'Footer Ad (728×90)', height: 'h-24', width: 'w-full' },
+};
+
+const config = sizes[type];
+---
+
+<div class={`${config.width} ${className}`}>
+  <div class={`${config.height} bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center`}>
+    <span class="text-xs text-gray-400 font-medium">[Advertisement Space — {config.label}]</span>
+  </div>
+</div>

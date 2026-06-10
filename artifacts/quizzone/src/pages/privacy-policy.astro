@@ -1,0 +1,65 @@
+---
+import Layout from '@layouts/Layout.astro';
+const lastUpdated = 'June 10, 2024';
+---
+
+<Layout
+  title="Privacy Policy | QuizZone"
+  description="QuizZone's privacy policy — how we collect, use, and protect your data."
+  canonical="/privacy-policy"
+>
+  <section class="bg-gradient-to-br from-gray-50 to-blue-50 border-b border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-3">Privacy Policy</h1>
+      <p class="text-gray-500">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="prose prose-gray prose-lg max-w-none space-y-8">
+      {[
+        {
+          title: '1. Introduction',
+          content: 'Welcome to QuizZone. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.',
+        },
+        {
+          title: '2. Information We Collect',
+          content: 'We may collect information you provide directly to us, such as when you contact us through our contact form. This may include your name and email address. We also collect usage data automatically, such as pages visited, time spent, and quiz scores (stored locally in your browser).',
+        },
+        {
+          title: '3. How We Use Your Information',
+          content: 'We use the information we collect to: respond to your inquiries and provide customer support; improve our website, quizzes, and user experience; analyze usage patterns to enhance content; and comply with legal obligations.',
+        },
+        {
+          title: '4. Cookies and Tracking Technologies',
+          content: 'We may use cookies and similar tracking technologies to track activity on our website. Cookies are small data files stored on your device. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, some portions of our site may not function properly.',
+        },
+        {
+          title: '5. Third-Party Advertising',
+          content: 'QuizZone may display third-party advertisements. These advertisers may use cookies and web beacons to collect information about your visits to this and other websites to provide relevant advertisements. We do not control these third-party cookies. Please review the respective privacy policies of those advertisers.',
+        },
+        {
+          title: '6. Data Security',
+          content: 'We implement reasonable security measures to protect your information. However, no method of internet transmission or electronic storage is 100% secure, and we cannot guarantee absolute security.',
+        },
+        {
+          title: '7. Children\'s Privacy',
+          content: 'Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.',
+        },
+        {
+          title: '8. Changes to This Privacy Policy',
+          content: 'We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.',
+        },
+        {
+          title: '9. Contact Us',
+          content: 'If you have any questions about this Privacy Policy, please contact us via our Contact page.',
+        },
+      ].map((section) => (
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">{section.title}</h2>
+          <p class="text-gray-600 leading-relaxed">{section.content}</p>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>

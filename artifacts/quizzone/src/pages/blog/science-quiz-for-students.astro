@@ -1,0 +1,57 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout
+  title="Science Quiz Questions Every Student Should Know | QuizZone Blog"
+  description="From biology and chemistry to physics and earth science — these science quiz questions cover fundamentals every student should master."
+  canonical="/blog/science-quiz-for-students"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-400 mb-8 flex items-center gap-2">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <span>›</span>
+      <a href="/blog" class="hover:text-blue-600">Blog</a>
+      <span>›</span>
+      <span class="text-gray-600">Science Quiz for Students</span>
+    </nav>
+    <article>
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-teal-100 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full">Science</span>
+          <span class="text-xs text-gray-400">May 8, 2024 · 6 min read</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+          Science Quiz Questions Every Student Should Know
+        </h1>
+        <p class="text-lg text-gray-500 leading-relaxed">
+          Science is full of amazing discoveries. These questions cover biology, chemistry, physics, and earth science — perfect for students and lifelong learners alike.
+        </p>
+      </header>
+      <div class="prose prose-gray max-w-none space-y-6">
+        {[
+          { q: 'What is the powerhouse of the cell?', a: 'Mitochondria' },
+          { q: 'What is the chemical symbol for water?', a: 'H₂O' },
+          { q: 'How many bones are in the adult human body?', a: '206' },
+          { q: 'What force keeps planets in orbit around the Sun?', a: 'Gravity' },
+          { q: 'What is the most abundant gas in Earth\'s atmosphere?', a: 'Nitrogen (78%)' },
+          { q: 'What is the process by which plants make their food?', a: 'Photosynthesis' },
+          { q: 'What is the hardest natural substance on Earth?', a: 'Diamond' },
+          { q: 'What is the atomic number of carbon?', a: '6' },
+          { q: 'What planet is known as the Red Planet?', a: 'Mars' },
+          { q: 'What is the study of earthquakes called?', a: 'Seismology' },
+        ].map((item, i) => (
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-5">
+            <p class="font-semibold text-gray-900 mb-2"><span class="text-teal-600">Q{i + 1}.</span> {item.q}</p>
+            <p class="text-sm text-green-700 font-medium">✅ {item.a}</p>
+          </div>
+        ))}
+        <div class="bg-teal-50 border border-teal-100 rounded-2xl p-6 text-center">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Ready for the Science Quiz?</h3>
+          <p class="text-gray-500 mb-4">Challenge yourself with our full Science & Nature quiz on QuizZone!</p>
+          <a href="/quiz/science-nature" class="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-colors shadow-md">Play Science Quiz →</a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>

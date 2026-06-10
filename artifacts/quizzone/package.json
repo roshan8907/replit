@@ -1,0 +1,20 @@
+{
+  "name": "@workspace/quizzone",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port $PORT",
+    "build": "astro build",
+    "serve": "astro preview --host 0.0.0.0 --port $PORT",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "astro": "^4.16.18",
+    "@astrojs/tailwind": "^5.1.3",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/check": "^0.9.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.9.3"
+  }
+}

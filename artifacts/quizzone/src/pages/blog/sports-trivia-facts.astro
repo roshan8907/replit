@@ -1,0 +1,41 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+<Layout title="Amazing Sports Trivia Facts | QuizZone Blog" description="Sports trivia questions covering football, basketball, tennis, Olympics, and more. Test your knowledge!" canonical="/blog/sports-trivia-facts">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-400 mb-8 flex items-center gap-2">
+      <a href="/" class="hover:text-blue-600">Home</a><span>›</span><a href="/blog" class="hover:text-blue-600">Blog</a><span>›</span><span class="text-gray-600">Sports Trivia</span>
+    </nav>
+    <article>
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full">Sports</span>
+          <span class="text-xs text-gray-400">April 10, 2024 · 4 min read</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">Amazing Sports Trivia Facts and Questions</h1>
+        <p class="text-lg text-gray-500 leading-relaxed">Think you know sports? These trivia questions cover everything from football and basketball to tennis, golf, and the Olympics.</p>
+      </header>
+      <div class="space-y-4 mb-8">
+        {[
+          { q: 'How many players are on a soccer team on the field?', a: '11' },
+          { q: 'Which country has won the most FIFA World Cup titles?', a: 'Brazil (5 times)' },
+          { q: 'How many Grand Slam tennis tournaments are held per year?', a: '4' },
+          { q: 'How long is a marathon?', a: '42.195 km (26.2 miles)' },
+          { q: 'In golf, what is one stroke under par called?', a: 'Birdie' },
+          { q: 'What sport uses a puck?', a: 'Ice Hockey' },
+          { q: 'The 2022 FIFA World Cup was held in which country?', a: 'Qatar' },
+          { q: 'How many players are on a volleyball court per side?', a: '6' },
+        ].map((item, i) => (
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-5">
+            <p class="font-semibold text-gray-900 mb-2"><span class="text-red-600">Q{i + 1}.</span> {item.q}</p>
+            <p class="text-sm text-green-700 font-medium">✅ {item.a}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Play the Sports Quiz!</h3>
+        <a href="/quiz/sports" class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-colors shadow-md">Play Sports Quiz →</a>
+      </div>
+    </article>
+  </main>
+</Layout>

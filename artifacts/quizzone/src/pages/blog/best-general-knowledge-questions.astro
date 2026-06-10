@@ -1,0 +1,89 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const questions = [
+  { q: 'What is the capital city of Australia?', a: 'Canberra (not Sydney!)' },
+  { q: 'How many sides does a hexagon have?', a: 'Six' },
+  { q: 'Who painted the Mona Lisa?', a: 'Leonardo da Vinci' },
+  { q: 'What is the chemical symbol for gold?', a: 'Au (from Latin: Aurum)' },
+  { q: 'How many continents are there on Earth?', a: 'Seven' },
+  { q: 'What is the smallest planet in our solar system?', a: 'Mercury' },
+  { q: 'Which country invented paper?', a: 'China' },
+  { q: 'How many teeth does an adult human have?', a: '32 (including wisdom teeth)' },
+  { q: 'What is the most spoken language in the world?', a: 'Mandarin Chinese (by native speakers)' },
+  { q: 'Which element has the symbol O?', a: 'Oxygen' },
+];
+---
+
+<Layout
+  title="Best General Knowledge Quiz Questions for 2024 | QuizZone Blog"
+  description="Looking for the best general knowledge quiz questions? We've compiled the ultimate list perfect for quiz nights, school competitions, or solo practice."
+  canonical="/blog/best-general-knowledge-questions"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-400 mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <span>›</span>
+      <a href="/blog" class="hover:text-blue-600">Blog</a>
+      <span>›</span>
+      <span class="text-gray-600">General Knowledge Questions</span>
+    </nav>
+
+    <article>
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">General Knowledge</span>
+          <span class="text-xs text-gray-400">June 1, 2024 · 5 min read</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+          The Best General Knowledge Quiz Questions for 2024
+        </h1>
+        <p class="text-lg text-gray-500 leading-relaxed">
+          Whether you're hosting a quiz night, preparing for a school competition, or just love a good brain challenge — these general knowledge questions are a great place to start.
+        </p>
+      </header>
+
+      <div class="prose prose-gray prose-lg max-w-none">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Why General Knowledge Matters</h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          General knowledge is the foundation of trivia. It spans history, science, culture, geography, and everyday facts. Having a broad base of knowledge not only helps you win at quiz nights but also makes you a more informed and curious person.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Top 10 General Knowledge Questions</h2>
+        <div class="space-y-4 mb-8">
+          {questions.map((item, i) => (
+            <div class="bg-gray-50 border border-gray-100 rounded-xl p-5">
+              <p class="font-semibold text-gray-900 mb-2"><span class="text-blue-600">Q{i + 1}.</span> {item.q}</p>
+              <p class="text-sm text-green-700 font-medium">✅ Answer: {item.a}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Tips for Improving General Knowledge</h2>
+        <ul class="space-y-3 text-gray-600 mb-8">
+          {[
+            'Read widely — newspapers, books, and reputable websites keep you informed.',
+            'Watch documentaries and educational YouTube channels.',
+            'Play trivia games regularly — apps and websites like QuizZone help a lot!',
+            'Join quiz nights or trivia clubs in your area.',
+            'Use flashcards to memorize key facts in areas where you\'re weak.',
+          ].map((tip) => (
+            <li class="flex items-start gap-3">
+              <span class="text-blue-500 mt-0.5 flex-shrink-0">→</span>
+              <span>{tip}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Ready to Test Your Knowledge?</h3>
+          <p class="text-gray-500 mb-4">Play the full General Knowledge quiz on QuizZone — 10 questions with a timer!</p>
+          <a href="/quiz/general-knowledge" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors shadow-md">
+            Play Now →
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,210 @@
+Build a complete SEO-friendly Trivia Quiz website using Astro JS.
+
+PROJECT NAME:
+QuizZone
+
+GOAL:
+Create a fast, clean, mobile-friendly trivia website similar to popular online quiz websites. The website should be optimized for Google SEO, AdSense approval, user engagement, and future scaling.
+
+TECH STACK:
+
+* Astro JS
+* TypeScript
+* Tailwind CSS
+* JSON question database
+* Static Site Generation where possible
+* Fully responsive design
+
+DESIGN REQUIREMENTS:
+
+Homepage Layout:
+
+Top Header
+
+* Logo on left
+* Navigation menu
+* Search icon
+* Mobile hamburger menu
+
+Hero Section
+
+* Large title:
+  "Free Online Trivia Quiz"
+* Subtitle:
+  "Test your knowledge with fun quizzes across multiple categories."
+* Start Quiz button
+
+Category Grid
+
+Display categories as modern cards:
+
+* General Knowledge
+* Entertainment
+* History
+* Geography
+* Science & Nature
+* Food & Drink
+* Sports
+* Technology
+
+Each card should contain:
+
+* Icon
+* Category name
+* Number of quizzes
+* Hover effect
+* Clickable
+
+Ad Placement Areas
+
+Reserve empty sections for future ads:
+
+Top Banner Ad
+Leaderboard Ad
+Sidebar Ad
+In-Content Ad
+Footer Ad
+
+Use placeholders such as:
+
+[Advertisement Space]
+
+Do NOT include real ads.
+
+QUIZ PAGE:
+
+Question Card
+
+Display:
+
+Question number
+Timer
+Question text
+4 multiple choice answers
+
+Example:
+
+Which planet is known as the Red Planet?
+
+A) Earth
+B) Mars
+C) Venus
+D) Jupiter
+
+Features:
+
+* Next button
+* Previous button
+* Progress bar
+* 10 questions per quiz
+* Score tracking
+* Timer tracking
+* Responsive layout
+
+RESULT PAGE
+
+Display:
+
+Final Score
+Correct Answers
+Incorrect Answers
+Percentage
+Time Taken
+
+Buttons:
+
+Play Again
+Try Another Category
+Share Score
+
+SEO REQUIREMENTS
+
+Generate:
+
+SEO title
+Meta description
+Canonical URL
+Open Graph tags
+Twitter tags
+Schema markup
+
+Example Homepage SEO:
+
+Title:
+Free Online Trivia Quiz | QuizZone
+
+Description:
+Play free online trivia quizzes covering general knowledge, history, science, geography, entertainment, sports, and more.
+
+Generate sitemap.xml automatically.
+
+Generate robots.txt.
+
+Use semantic HTML:
+
+header
+main
+section
+article
+footer
+
+PERFORMANCE REQUIREMENTS
+
+* Lazy load images
+* Optimized assets
+* Lighthouse score above 90
+* Fast loading
+* Mobile-first
+
+CONTENT PAGES
+
+Create SEO pages:
+
+/about
+/contact
+/privacy-policy
+/terms
+/categories
+/blog
+
+BLOG SECTION
+
+Allow future articles such as:
+
+* Best Trivia Questions
+* Geography Quiz Questions
+* Science Quiz for Students
+* General Knowledge Questions
+
+Use Astro content collections.
+
+UI STYLE
+
+Modern
+Clean
+Professional
+White background
+Dark text
+Blue accent color
+Large readable fonts
+
+Inspired by:
+
+Google simplicity
+Modern quiz platforms
+Fast user experience
+
+OUTPUT
+
+Generate complete Astro project structure.
+
+Include:
+
+astro.config.mjs
+src/pages
+src/layouts
+src/components
+src/content
+public
+
+Generate all code needed to run immediately in Replit.

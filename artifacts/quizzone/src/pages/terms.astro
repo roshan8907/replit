@@ -1,0 +1,69 @@
+---
+import Layout from '@layouts/Layout.astro';
+const lastUpdated = 'June 10, 2024';
+---
+
+<Layout
+  title="Terms of Service | QuizZone"
+  description="QuizZone's terms of service — the rules and conditions for using our free online trivia quiz platform."
+  canonical="/terms"
+>
+  <section class="bg-gradient-to-br from-gray-50 to-blue-50 border-b border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-3">Terms of Service</h1>
+      <p class="text-gray-500">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="prose prose-gray prose-lg max-w-none space-y-8">
+      {[
+        {
+          title: '1. Acceptance of Terms',
+          content: 'By accessing and using QuizZone, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our website.',
+        },
+        {
+          title: '2. Use of the Website',
+          content: 'QuizZone grants you a personal, non-exclusive, non-transferable license to use the website for personal, non-commercial purposes. You agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion of the website without our express written permission.',
+        },
+        {
+          title: '3. Intellectual Property',
+          content: 'All content on QuizZone, including but not limited to questions, answers, explanations, design, graphics, and code, is the intellectual property of QuizZone and is protected by applicable copyright and trademark laws.',
+        },
+        {
+          title: '4. Accuracy of Content',
+          content: 'While we strive to ensure the accuracy of all quiz questions and answers, QuizZone makes no warranties regarding the completeness, reliability, or accuracy of this information. Any action you take upon the information on this website is strictly at your own risk.',
+        },
+        {
+          title: '5. Third-Party Links and Advertising',
+          content: 'QuizZone may contain links to third-party websites and advertisements. These third-party sites have separate and independent privacy policies. We have no responsibility or liability for the content and activities of these linked sites.',
+        },
+        {
+          title: '6. Disclaimer of Warranties',
+          content: 'QuizZone is provided "as is" without any representations or warranties, express or implied. We make no representations or warranties in relation to this website or the information and materials provided on it.',
+        },
+        {
+          title: '7. Limitation of Liability',
+          content: 'In no event shall QuizZone be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, or goodwill, arising from your use of or inability to use the website.',
+        },
+        {
+          title: '8. Modifications to Terms',
+          content: 'We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to the website. Your continued use of QuizZone after any modifications indicates your acceptance of the new terms.',
+        },
+        {
+          title: '9. Governing Law',
+          content: 'These terms shall be governed by and construed in accordance with applicable law. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the competent courts.',
+        },
+        {
+          title: '10. Contact',
+          content: 'If you have any questions regarding these Terms of Service, please contact us through our Contact page.',
+        },
+      ].map((section) => (
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">{section.title}</h2>
+          <p class="text-gray-600 leading-relaxed">{section.content}</p>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>

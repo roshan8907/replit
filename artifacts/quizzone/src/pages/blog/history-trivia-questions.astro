@@ -1,0 +1,42 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+<Layout title="25 History Trivia Questions | QuizZone Blog" description="Dive into ancient civilizations, world wars, and modern history with these carefully crafted trivia questions." canonical="/blog/history-trivia-questions">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm text-gray-400 mb-8 flex items-center gap-2">
+      <a href="/" class="hover:text-blue-600">Home</a><span>›</span><a href="/blog" class="hover:text-blue-600">Blog</a><span>›</span><span class="text-gray-600">History Trivia</span>
+    </nav>
+    <article>
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full">History</span>
+          <span class="text-xs text-gray-400">April 25, 2024 · 5 min read</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">25 History Trivia Questions That Will Test Your Knowledge</h1>
+        <p class="text-lg text-gray-500 leading-relaxed">From ancient empires to modern revolutions, history is full of fascinating stories. Test your knowledge with these handpicked trivia questions.</p>
+      </header>
+      <div class="space-y-4 mb-8">
+        {[
+          { q: 'In what year did Columbus first arrive in the Americas?', a: '1492' },
+          { q: 'Who was the first President of the United States?', a: 'George Washington' },
+          { q: 'The Berlin Wall fell in which year?', a: '1989' },
+          { q: 'Which pharaoh ordered the construction of the Great Pyramid?', a: 'Khufu (Cheops)' },
+          { q: 'When did the French Revolution begin?', a: '1789' },
+          { q: 'Which country was the first to grant women the right to vote?', a: 'New Zealand (1893)' },
+          { q: 'What was the name of the first artificial Earth satellite?', a: 'Sputnik 1 (1957)' },
+          { q: 'Who was the first person to walk on the Moon?', a: 'Neil Armstrong (1969)' },
+        ].map((item, i) => (
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-5">
+            <p class="font-semibold text-gray-900 mb-2"><span class="text-amber-600">Q{i + 1}.</span> {item.q}</p>
+            <p class="text-sm text-green-700 font-medium">✅ {item.a}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Play the History Quiz!</h3>
+        <p class="text-gray-500 mb-4">10 questions, timer included. How well do you know history?</p>
+        <a href="/quiz/history" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl transition-colors shadow-md">Play History Quiz →</a>
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,121 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const posts = [
+  {
+    slug: 'best-general-knowledge-questions',
+    title: 'The Best General Knowledge Quiz Questions for 2024',
+    excerpt: 'Looking for the best general knowledge quiz questions? We\'ve compiled the ultimate list that\'s perfect for quiz nights, school competitions, or solo practice.',
+    date: 'June 1, 2024',
+    category: 'General Knowledge',
+    readTime: '5 min',
+    emoji: '🧠',
+  },
+  {
+    slug: 'top-geography-quiz-questions',
+    title: 'Top 20 Geography Quiz Questions You Must Try',
+    excerpt: 'Test your geography knowledge with these handpicked questions covering capitals, landmarks, oceans, mountains, and more from around the world.',
+    date: 'May 20, 2024',
+    category: 'Geography',
+    readTime: '4 min',
+    emoji: '🌍',
+  },
+  {
+    slug: 'science-quiz-for-students',
+    title: 'Science Quiz Questions Every Student Should Know',
+    excerpt: 'From biology and chemistry to physics and earth science — these science quiz questions cover the fundamentals every student should master.',
+    date: 'May 8, 2024',
+    category: 'Science',
+    readTime: '6 min',
+    emoji: '🔬',
+  },
+  {
+    slug: 'history-trivia-questions',
+    title: '25 History Trivia Questions That Will Test Your Knowledge',
+    excerpt: 'Dive into ancient civilizations, world wars, great explorers, and modern history with these carefully crafted trivia questions.',
+    date: 'April 25, 2024',
+    category: 'History',
+    readTime: '5 min',
+    emoji: '🏛️',
+  },
+  {
+    slug: 'sports-trivia-facts',
+    title: 'Amazing Sports Trivia Facts and Questions',
+    excerpt: 'Whether you\'re a sports fanatic or a casual fan, these sports trivia questions will put your knowledge of football, basketball, tennis, and more to the test.',
+    date: 'April 10, 2024',
+    category: 'Sports',
+    readTime: '4 min',
+    emoji: '⚽',
+  },
+  {
+    slug: 'food-and-drink-trivia',
+    title: 'Food & Drink Trivia: Questions from Around the World',
+    excerpt: 'How well do you know the world\'s cuisines? From obscure ingredients to famous dishes, these food and drink trivia questions will challenge even the most seasoned foodies.',
+    date: 'March 28, 2024',
+    category: 'Food & Drink',
+    readTime: '5 min',
+    emoji: '🍕',
+  },
+];
+---
+
+<Layout
+  title="Trivia Quiz Blog — Tips, Questions & Guides | QuizZone"
+  description="Explore the QuizZone blog for trivia questions, quiz guides, and fascinating facts across science, history, geography, sports, and more."
+  canonical="/blog"
+>
+  <section class="bg-gradient-to-br from-gray-50 to-blue-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Trivia Blog</h1>
+      <p class="text-lg text-gray-500 max-w-xl mx-auto">
+        Trivia questions, quiz guides, fascinating facts, and tips to improve your knowledge.
+      </p>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <!-- Featured Post -->
+    <article class="mb-12">
+      <a href={`/blog/${posts[0].slug}`} class="group grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all overflow-hidden">
+        <div class="bg-gradient-to-br from-blue-100 to-indigo-100 h-56 md:h-full flex items-center justify-center text-8xl group-hover:scale-105 transition-transform duration-500 min-h-48">
+          {posts[0].emoji}
+        </div>
+        <div class="p-8 flex flex-col justify-center">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Featured</span>
+            <span class="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">{posts[0].category}</span>
+          </div>
+          <h2 class="text-2xl font-extrabold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug">{posts[0].title}</h2>
+          <p class="text-gray-500 leading-relaxed mb-5">{posts[0].excerpt}</p>
+          <div class="flex items-center gap-3 text-sm text-gray-400">
+            <span>{posts[0].date}</span>
+            <span>·</span>
+            <span>{posts[0].readTime} read</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- Post Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {posts.slice(1).map((post) => (
+        <article>
+          <a href={`/blog/${post.slug}`} class="group block bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden h-full">
+            <div class="bg-gradient-to-br from-gray-50 to-blue-50 h-40 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
+              {post.emoji}
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">{post.category}</span>
+                <span class="text-xs text-gray-400">{post.readTime} read</span>
+              </div>
+              <h2 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-3">{post.title}</h2>
+              <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">{post.excerpt}</p>
+              <div class="mt-4 text-xs text-gray-400">{post.date}</div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>

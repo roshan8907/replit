@@ -1,0 +1,634 @@
+{
+  "general-knowledge": {
+    "name": "General Knowledge",
+    "icon": "🧠",
+    "color": "from-blue-500 to-blue-700",
+    "description": "Test your everyday knowledge across a wide range of topics.",
+    "quizCount": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the capital city of Australia?",
+        "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+        "correct": 2,
+        "explanation": "Canberra is the capital city of Australia, chosen as a compromise between the rival cities of Sydney and Melbourne."
+      },
+      {
+        "id": 2,
+        "question": "How many sides does a hexagon have?",
+        "options": ["5", "6", "7", "8"],
+        "correct": 1,
+        "explanation": "A hexagon has 6 sides. The prefix 'hex' comes from Greek meaning six."
+      },
+      {
+        "id": 3,
+        "question": "What is the largest ocean on Earth?",
+        "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        "correct": 3,
+        "explanation": "The Pacific Ocean is the largest and deepest ocean on Earth, covering more than 30% of the Earth's surface."
+      },
+      {
+        "id": 4,
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+        "correct": 1,
+        "explanation": "William Shakespeare wrote Romeo and Juliet, believed to have been written between 1594 and 1596."
+      },
+      {
+        "id": 5,
+        "question": "What is the chemical symbol for gold?",
+        "options": ["Go", "Gd", "Au", "Ag"],
+        "correct": 2,
+        "explanation": "The chemical symbol for gold is Au, from the Latin word 'Aurum'."
+      },
+      {
+        "id": 6,
+        "question": "How many continents are there on Earth?",
+        "options": ["5", "6", "7", "8"],
+        "correct": 2,
+        "explanation": "There are 7 continents on Earth: Africa, Antarctica, Asia, Australia, Europe, North America, and South America."
+      },
+      {
+        "id": 7,
+        "question": "What is the speed of light?",
+        "options": ["300,000 km/s", "150,000 km/s", "450,000 km/s", "200,000 km/s"],
+        "correct": 0,
+        "explanation": "The speed of light in a vacuum is approximately 299,792 km/s, commonly rounded to 300,000 km/s."
+      },
+      {
+        "id": 8,
+        "question": "Who painted the Mona Lisa?",
+        "options": ["Michelangelo", "Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso"],
+        "correct": 2,
+        "explanation": "Leonardo da Vinci painted the Mona Lisa, believed to have been painted between 1503 and 1519."
+      },
+      {
+        "id": 9,
+        "question": "What is the smallest planet in our solar system?",
+        "options": ["Mars", "Mercury", "Venus", "Neptune"],
+        "correct": 1,
+        "explanation": "Mercury is the smallest planet in our solar system, with a radius of only 2,439.7 km."
+      },
+      {
+        "id": 10,
+        "question": "What year did World War II end?",
+        "options": ["1943", "1944", "1945", "1946"],
+        "correct": 2,
+        "explanation": "World War II ended in 1945, with Germany surrendering in May and Japan surrendering in September."
+      }
+    ]
+  },
+  "entertainment": {
+    "name": "Entertainment",
+    "icon": "🎬",
+    "color": "from-purple-500 to-purple-700",
+    "description": "Movies, music, TV shows, and pop culture trivia.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which movie won the first Academy Award for Best Picture?",
+        "options": ["Wings", "The Jazz Singer", "Sunrise", "7th Heaven"],
+        "correct": 0,
+        "explanation": "Wings (1927) won the first Academy Award for Best Picture at the inaugural ceremony in 1929."
+      },
+      {
+        "id": 2,
+        "question": "Who sang 'Thriller'?",
+        "options": ["Prince", "Michael Jackson", "Madonna", "David Bowie"],
+        "correct": 1,
+        "explanation": "Michael Jackson released 'Thriller' in 1982. It remains one of the best-selling albums of all time."
+      },
+      {
+        "id": 3,
+        "question": "In which TV show would you find characters named Ross, Monica, and Joey?",
+        "options": ["How I Met Your Mother", "Seinfeld", "Friends", "The Big Bang Theory"],
+        "correct": 2,
+        "explanation": "Ross Geller, Monica Geller, and Joey Tribbiani are main characters in the TV show 'Friends' (1994–2004)."
+      },
+      {
+        "id": 4,
+        "question": "What is the highest-grossing movie of all time (not adjusted for inflation)?",
+        "options": ["Avengers: Endgame", "Avatar", "Titanic", "Star Wars: The Force Awakens"],
+        "correct": 1,
+        "explanation": "Avatar (2009, re-released 2022) holds the record for highest-grossing film of all time with over $2.9 billion worldwide."
+      },
+      {
+        "id": 5,
+        "question": "Which band was Freddie Mercury the lead singer of?",
+        "options": ["Led Zeppelin", "The Rolling Stones", "Queen", "The Beatles"],
+        "correct": 2,
+        "explanation": "Freddie Mercury was the lead vocalist of Queen, one of the most successful rock bands in history."
+      },
+      {
+        "id": 6,
+        "question": "What streaming platform produced 'Stranger Things'?",
+        "options": ["HBO", "Amazon Prime", "Netflix", "Disney+"],
+        "correct": 2,
+        "explanation": "Stranger Things is an American science fiction horror drama television series created and produced by Netflix."
+      },
+      {
+        "id": 7,
+        "question": "Which actor plays Iron Man in the Marvel Cinematic Universe?",
+        "options": ["Chris Evans", "Chris Hemsworth", "Mark Ruffalo", "Robert Downey Jr."],
+        "correct": 3,
+        "explanation": "Robert Downey Jr. plays Tony Stark / Iron Man in the Marvel Cinematic Universe, starting with Iron Man (2008)."
+      },
+      {
+        "id": 8,
+        "question": "What year was the first iPhone released?",
+        "options": ["2005", "2006", "2007", "2008"],
+        "correct": 2,
+        "explanation": "The first iPhone was released on June 29, 2007, announced by Steve Jobs at the Macworld Conference & Expo."
+      },
+      {
+        "id": 9,
+        "question": "Which video game franchise features the character Master Chief?",
+        "options": ["Call of Duty", "Halo", "Gears of War", "Destiny"],
+        "correct": 1,
+        "explanation": "Master Chief is the protagonist of the Halo franchise, developed by Bungie and later 343 Industries."
+      },
+      {
+        "id": 10,
+        "question": "What is the name of the fictional kingdom in Disney's 'Frozen'?",
+        "options": ["Arendelle", "Corona", "Agrabah", "Atlantica"],
+        "correct": 0,
+        "explanation": "The Kingdom of Arendelle is the fictional setting of Disney's Frozen (2013), inspired by Norway."
+      }
+    ]
+  },
+  "history": {
+    "name": "History",
+    "icon": "🏛️",
+    "color": "from-amber-500 to-amber-700",
+    "description": "Journey through the pivotal events that shaped our world.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "In what year did Christopher Columbus first arrive in the Americas?",
+        "options": ["1488", "1492", "1500", "1510"],
+        "correct": 1,
+        "explanation": "Christopher Columbus arrived in the Americas on October 12, 1492, landing in the Bahamas."
+      },
+      {
+        "id": 2,
+        "question": "Which empire was ruled by Julius Caesar?",
+        "options": ["Greek Empire", "Roman Empire", "Byzantine Empire", "Ottoman Empire"],
+        "correct": 1,
+        "explanation": "Julius Caesar was a Roman general and statesman who played a critical role in the events that led to the demise of the Roman Republic."
+      },
+      {
+        "id": 3,
+        "question": "The Berlin Wall fell in which year?",
+        "options": ["1987", "1988", "1989", "1990"],
+        "correct": 2,
+        "explanation": "The Berlin Wall fell on November 9, 1989, marking the end of the Cold War division of Germany."
+      },
+      {
+        "id": 4,
+        "question": "Who was the first President of the United States?",
+        "options": ["John Adams", "Thomas Jefferson", "Benjamin Franklin", "George Washington"],
+        "correct": 3,
+        "explanation": "George Washington was the first President of the United States, serving from 1789 to 1797."
+      },
+      {
+        "id": 5,
+        "question": "In which city was the Titanic built?",
+        "options": ["London", "Glasgow", "Belfast", "Liverpool"],
+        "correct": 2,
+        "explanation": "The RMS Titanic was built in Belfast, Northern Ireland, at the Harland and Wolff shipyard."
+      },
+      {
+        "id": 6,
+        "question": "Which ancient wonder was located in Alexandria, Egypt?",
+        "options": ["The Colossus of Rhodes", "The Lighthouse of Alexandria", "The Hanging Gardens", "The Temple of Artemis"],
+        "correct": 1,
+        "explanation": "The Lighthouse of Alexandria (Pharos) was one of the Seven Wonders of the Ancient World, built in the 3rd century BC."
+      },
+      {
+        "id": 7,
+        "question": "Who was the Egyptian pharaoh during the construction of the Great Pyramid of Giza?",
+        "options": ["Ramesses II", "Tutankhamun", "Khufu", "Cleopatra"],
+        "correct": 2,
+        "explanation": "The Great Pyramid of Giza was built for Pharaoh Khufu (also known as Cheops) around 2560 BC."
+      },
+      {
+        "id": 8,
+        "question": "The French Revolution began in which year?",
+        "options": ["1776", "1789", "1793", "1800"],
+        "correct": 1,
+        "explanation": "The French Revolution began in 1789, starting with the storming of the Bastille on July 14, 1789."
+      },
+      {
+        "id": 9,
+        "question": "Who developed the theory of evolution by natural selection?",
+        "options": ["Isaac Newton", "Galileo Galilei", "Charles Darwin", "Albert Einstein"],
+        "correct": 2,
+        "explanation": "Charles Darwin proposed the theory of evolution by natural selection in his 1859 book 'On the Origin of Species'."
+      },
+      {
+        "id": 10,
+        "question": "Which country was the first to grant women the right to vote?",
+        "options": ["United States", "United Kingdom", "New Zealand", "Australia"],
+        "correct": 2,
+        "explanation": "New Zealand was the first self-governing country to grant women the right to vote in 1893."
+      }
+    ]
+  },
+  "geography": {
+    "name": "Geography",
+    "icon": "🌍",
+    "color": "from-green-500 to-green-700",
+    "description": "Explore the world's countries, capitals, and landmarks.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the longest river in the world?",
+        "options": ["Amazon River", "Yangtze River", "Nile River", "Mississippi River"],
+        "correct": 2,
+        "explanation": "The Nile River in Africa is generally considered the longest river in the world at approximately 6,650 km."
+      },
+      {
+        "id": 2,
+        "question": "Which country has the most natural lakes in the world?",
+        "options": ["Russia", "United States", "Canada", "Finland"],
+        "correct": 2,
+        "explanation": "Canada has more lakes than any other country in the world, containing about 60% of the world's freshwater lakes."
+      },
+      {
+        "id": 3,
+        "question": "What is the capital of Japan?",
+        "options": ["Osaka", "Kyoto", "Hiroshima", "Tokyo"],
+        "correct": 3,
+        "explanation": "Tokyo is the capital and largest city of Japan, and one of the most populous cities in the world."
+      },
+      {
+        "id": 4,
+        "question": "The Sahara Desert is located on which continent?",
+        "options": ["Asia", "South America", "Australia", "Africa"],
+        "correct": 3,
+        "explanation": "The Sahara Desert is the world's largest hot desert, covering much of North Africa."
+      },
+      {
+        "id": 5,
+        "question": "What is the tallest mountain in the world?",
+        "options": ["K2", "Mount Kilimanjaro", "Mount Everest", "Mont Blanc"],
+        "correct": 2,
+        "explanation": "Mount Everest in the Himalayas is the tallest mountain in the world, standing at 8,848.86 meters above sea level."
+      },
+      {
+        "id": 6,
+        "question": "Which country is home to the Amazon Rainforest?",
+        "options": ["Colombia", "Peru", "Venezuela", "Brazil"],
+        "correct": 3,
+        "explanation": "While the Amazon Rainforest spans several countries, approximately 60% of it is located in Brazil."
+      },
+      {
+        "id": 7,
+        "question": "What is the smallest country in the world?",
+        "options": ["Monaco", "San Marino", "Vatican City", "Liechtenstein"],
+        "correct": 2,
+        "explanation": "Vatican City is the smallest country in the world by both area and population, covering just 0.44 km²."
+      },
+      {
+        "id": 8,
+        "question": "Which ocean is the Atlantic Meridional Overturning Circulation part of?",
+        "options": ["Pacific Ocean", "Indian Ocean", "Arctic Ocean", "Atlantic Ocean"],
+        "correct": 3,
+        "explanation": "The Atlantic Meridional Overturning Circulation (AMOC) is a major ocean current system in the Atlantic Ocean."
+      },
+      {
+        "id": 9,
+        "question": "The Great Barrier Reef is located near which country?",
+        "options": ["New Zealand", "Philippines", "Indonesia", "Australia"],
+        "correct": 3,
+        "explanation": "The Great Barrier Reef, the world's largest coral reef system, is located off the coast of Queensland, Australia."
+      },
+      {
+        "id": 10,
+        "question": "Which is the largest country in the world by land area?",
+        "options": ["China", "Canada", "United States", "Russia"],
+        "correct": 3,
+        "explanation": "Russia is the largest country in the world by land area, covering approximately 17.1 million square kilometers."
+      }
+    ]
+  },
+  "science-nature": {
+    "name": "Science & Nature",
+    "icon": "🔬",
+    "color": "from-teal-500 to-teal-700",
+    "description": "From atoms to ecosystems — explore the wonders of science.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the atomic number of carbon?",
+        "options": ["4", "6", "8", "12"],
+        "correct": 1,
+        "explanation": "Carbon has an atomic number of 6, meaning it has 6 protons in its nucleus."
+      },
+      {
+        "id": 2,
+        "question": "What type of animal is a Komodo dragon?",
+        "options": ["Snake", "Crocodilian", "Lizard", "Tortoise"],
+        "correct": 2,
+        "explanation": "The Komodo dragon is the world's largest living lizard, found on the Indonesian islands of Komodo, Rinca, Flores, and Gili Motang."
+      },
+      {
+        "id": 3,
+        "question": "What is the powerhouse of the cell?",
+        "options": ["Nucleus", "Ribosome", "Mitochondria", "Golgi apparatus"],
+        "correct": 2,
+        "explanation": "Mitochondria are often called the 'powerhouse of the cell' because they generate most of the cell's supply of ATP (energy)."
+      },
+      {
+        "id": 4,
+        "question": "What is the most abundant gas in Earth's atmosphere?",
+        "options": ["Oxygen", "Carbon Dioxide", "Argon", "Nitrogen"],
+        "correct": 3,
+        "explanation": "Nitrogen makes up about 78% of Earth's atmosphere, making it the most abundant gas."
+      },
+      {
+        "id": 5,
+        "question": "How many bones are in the adult human body?",
+        "options": ["196", "206", "216", "226"],
+        "correct": 1,
+        "explanation": "An adult human body has 206 bones. Babies are born with around 300 bones, which fuse together as they grow."
+      },
+      {
+        "id": 6,
+        "question": "What is the process by which plants make their own food?",
+        "options": ["Respiration", "Transpiration", "Photosynthesis", "Osmosis"],
+        "correct": 2,
+        "explanation": "Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to produce oxygen and energy in the form of sugar."
+      },
+      {
+        "id": 7,
+        "question": "What planet is known as the Red Planet?",
+        "options": ["Jupiter", "Venus", "Mercury", "Mars"],
+        "correct": 3,
+        "explanation": "Mars is called the Red Planet because its surface is covered in iron oxide (rust), giving it a reddish appearance."
+      },
+      {
+        "id": 8,
+        "question": "What is the hardest natural substance on Earth?",
+        "options": ["Ruby", "Sapphire", "Diamond", "Quartz"],
+        "correct": 2,
+        "explanation": "Diamond is the hardest natural substance on Earth, scoring 10 on the Mohs scale of mineral hardness."
+      },
+      {
+        "id": 9,
+        "question": "What is the study of earthquakes called?",
+        "options": ["Volcanology", "Seismology", "Geology", "Tectonics"],
+        "correct": 1,
+        "explanation": "Seismology is the scientific study of earthquakes and the propagation of elastic waves through the Earth."
+      },
+      {
+        "id": 10,
+        "question": "What is the primary source of energy for the water cycle?",
+        "options": ["Wind", "The Moon", "The Sun", "Gravity"],
+        "correct": 2,
+        "explanation": "The Sun is the primary source of energy for the water cycle, driving evaporation and the movement of water through the atmosphere."
+      }
+    ]
+  },
+  "food-drink": {
+    "name": "Food & Drink",
+    "icon": "🍕",
+    "color": "from-orange-500 to-orange-700",
+    "description": "Delicious questions about cuisines, ingredients, and culinary culture.",
+    "quizCount": 3,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Which country is the origin of sushi?",
+        "options": ["China", "Korea", "Japan", "Thailand"],
+        "correct": 2,
+        "explanation": "Sushi originated in Japan, evolving from a Southeast Asian dish where fish was fermented with rice. Modern nigiri sushi was developed in Edo (Tokyo) in the 19th century."
+      },
+      {
+        "id": 2,
+        "question": "What is the main ingredient in guacamole?",
+        "options": ["Tomato", "Avocado", "Lime", "Onion"],
+        "correct": 1,
+        "explanation": "The main ingredient in guacamole is avocado. The word 'guacamole' comes from the Nahuatl word 'āhuacamōlli' meaning avocado sauce."
+      },
+      {
+        "id": 3,
+        "question": "Which cheese is traditionally used in a Greek salad?",
+        "options": ["Mozzarella", "Gouda", "Brie", "Feta"],
+        "correct": 3,
+        "explanation": "Feta cheese is the traditional Greek cheese used in Greek salad (horiatiki). It is a Protected Designation of Origin (PDO) product."
+      },
+      {
+        "id": 4,
+        "question": "What is sake made from?",
+        "options": ["Potatoes", "Barley", "Grapes", "Rice"],
+        "correct": 3,
+        "explanation": "Sake is a Japanese alcoholic beverage made by fermenting rice that has been polished to remove its bran."
+      },
+      {
+        "id": 5,
+        "question": "Which spice gives turmeric its yellow color?",
+        "options": ["Saffron", "Curcumin", "Paprika", "Annatto"],
+        "correct": 1,
+        "explanation": "Curcumin is the main chemical compound in turmeric that gives it its distinctive yellow color and many of its health benefits."
+      },
+      {
+        "id": 6,
+        "question": "What country invented croissants?",
+        "options": ["France", "Austria", "Italy", "Switzerland"],
+        "correct": 1,
+        "explanation": "The croissant was invented in Austria, based on the Viennese kipferl. French bakers adapted and popularized it in the form we know today."
+      },
+      {
+        "id": 7,
+        "question": "What type of pasta is tube-shaped?",
+        "options": ["Spaghetti", "Linguine", "Penne", "Fettuccine"],
+        "correct": 2,
+        "explanation": "Penne is a type of pasta shaped like a tube with diagonal cuts at the ends. Its name comes from the Italian word for 'quill' or 'pen'."
+      },
+      {
+        "id": 8,
+        "question": "Which nut is used to make marzipan?",
+        "options": ["Walnut", "Hazelnut", "Cashew", "Almond"],
+        "correct": 3,
+        "explanation": "Marzipan is made from ground almonds, sugar, and sometimes egg whites. It is commonly used in confectionery and as a cake covering."
+      },
+      {
+        "id": 9,
+        "question": "What is the Scoville scale used to measure?",
+        "options": ["Wine sweetness", "Coffee strength", "Chili pepper heat", "Cheese age"],
+        "correct": 2,
+        "explanation": "The Scoville scale measures the pungency (spiciness) of chili peppers, as defined by the amount of capsaicin they contain."
+      },
+      {
+        "id": 10,
+        "question": "In which country did the croissant originate?",
+        "options": ["Germany", "France", "Austria", "Belgium"],
+        "correct": 2,
+        "explanation": "The croissant originates from Austria, where it was based on the Viennese kipferl. It was later popularized in France."
+      }
+    ]
+  },
+  "sports": {
+    "name": "Sports",
+    "icon": "⚽",
+    "color": "from-red-500 to-red-700",
+    "description": "From the pitch to the court — test your sports knowledge.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "How many players are on a standard soccer team on the field?",
+        "options": ["9", "10", "11", "12"],
+        "correct": 2,
+        "explanation": "A standard soccer (association football) team has 11 players on the field, including the goalkeeper."
+      },
+      {
+        "id": 2,
+        "question": "In which sport would you perform a 'slam dunk'?",
+        "options": ["Volleyball", "Baseball", "Basketball", "Tennis"],
+        "correct": 2,
+        "explanation": "A slam dunk is a type of basketball shot that is performed when a player jumps in the air and forcefully puts the ball down through the basket."
+      },
+      {
+        "id": 3,
+        "question": "The 2022 FIFA World Cup was held in which country?",
+        "options": ["Russia", "Brazil", "Qatar", "France"],
+        "correct": 2,
+        "explanation": "The 2022 FIFA World Cup was held in Qatar, making it the first World Cup held in the Middle East."
+      },
+      {
+        "id": 4,
+        "question": "How many Grand Slam tennis tournaments are there per year?",
+        "options": ["2", "3", "4", "5"],
+        "correct": 2,
+        "explanation": "There are 4 Grand Slam tennis tournaments per year: the Australian Open, French Open, Wimbledon, and the US Open."
+      },
+      {
+        "id": 5,
+        "question": "Which country has won the most FIFA World Cup titles?",
+        "options": ["Germany", "Argentina", "Italy", "Brazil"],
+        "correct": 3,
+        "explanation": "Brazil has won the FIFA World Cup a record 5 times, in 1958, 1962, 1970, 1994, and 2002."
+      },
+      {
+        "id": 6,
+        "question": "How long is a marathon race?",
+        "options": ["26.2 miles", "25 miles", "24.5 miles", "27 miles"],
+        "correct": 0,
+        "explanation": "A marathon is a long-distance foot race with an official distance of 42.195 km (approximately 26.2 miles or 26 miles 385 yards)."
+      },
+      {
+        "id": 7,
+        "question": "In golf, what term describes completing a hole in one stroke under par?",
+        "options": ["Eagle", "Birdie", "Bogey", "Albatross"],
+        "correct": 1,
+        "explanation": "A birdie in golf is a score of one under par for a hole. An eagle is two under par, and an albatross (or double eagle) is three under par."
+      },
+      {
+        "id": 8,
+        "question": "What sport uses a puck?",
+        "options": ["Field Hockey", "Lacrosse", "Ice Hockey", "Polo"],
+        "correct": 2,
+        "explanation": "Ice hockey uses a puck, which is a hard vulcanized rubber disc that players hit with their sticks to score goals."
+      },
+      {
+        "id": 9,
+        "question": "How many players are on each side in a volleyball game?",
+        "options": ["5", "6", "7", "8"],
+        "correct": 1,
+        "explanation": "In standard volleyball, each team has 6 players on the court at a time."
+      },
+      {
+        "id": 10,
+        "question": "At which Olympic Games were women first allowed to compete?",
+        "options": ["1894 Athens", "1900 Paris", "1904 St. Louis", "1908 London"],
+        "correct": 1,
+        "explanation": "Women were first allowed to compete at the 1900 Paris Olympics, though they were limited to a small number of events including tennis and golf."
+      }
+    ]
+  },
+  "technology": {
+    "name": "Technology",
+    "icon": "💻",
+    "color": "from-indigo-500 to-indigo-700",
+    "description": "Gadgets, software, the internet, and everything tech.",
+    "quizCount": 4,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Who co-founded Apple Inc. with Steve Wozniak?",
+        "options": ["Bill Gates", "Steve Jobs", "Jeff Bezos", "Elon Musk"],
+        "correct": 1,
+        "explanation": "Steve Jobs co-founded Apple Inc. in 1976 along with Steve Wozniak and Ronald Wayne."
+      },
+      {
+        "id": 2,
+        "question": "What does 'HTTP' stand for?",
+        "options": ["HyperText Transfer Protocol", "High Tech Transfer Process", "HyperText Transmission Platform", "Hyperlink Text Transfer Program"],
+        "correct": 0,
+        "explanation": "HTTP stands for HyperText Transfer Protocol, the foundation of data communication on the World Wide Web."
+      },
+      {
+        "id": 3,
+        "question": "Which programming language was created by Guido van Rossum?",
+        "options": ["Java", "C++", "Ruby", "Python"],
+        "correct": 3,
+        "explanation": "Python was created by Guido van Rossum and first released in 1991. He designed it to emphasize code readability."
+      },
+      {
+        "id": 4,
+        "question": "What does 'CPU' stand for?",
+        "options": ["Central Processing Unit", "Computer Power Unit", "Core Processing Utility", "Central Program Utility"],
+        "correct": 0,
+        "explanation": "CPU stands for Central Processing Unit, the primary component of a computer that performs most of the processing."
+      },
+      {
+        "id": 5,
+        "question": "In what year was the World Wide Web invented?",
+        "options": ["1983", "1986", "1989", "1991"],
+        "correct": 2,
+        "explanation": "Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN. He published a proposal in March 1989."
+      },
+      {
+        "id": 6,
+        "question": "What is the binary representation of the decimal number 10?",
+        "options": ["1001", "1010", "1100", "0101"],
+        "correct": 1,
+        "explanation": "The decimal number 10 is represented as 1010 in binary (8 + 2 = 10)."
+      },
+      {
+        "id": 7,
+        "question": "Which company developed the Android operating system?",
+        "options": ["Apple", "Microsoft", "Google", "Samsung"],
+        "correct": 2,
+        "explanation": "Android was developed by Android Inc., which was acquired by Google in 2005. Google continues to develop and maintain the operating system."
+      },
+      {
+        "id": 8,
+        "question": "What does 'AI' stand for in technology?",
+        "options": ["Automated Interface", "Advanced Innovation", "Artificial Intelligence", "Algorithmic Integration"],
+        "correct": 2,
+        "explanation": "AI stands for Artificial Intelligence, referring to the simulation of human intelligence processes by computer systems."
+      },
+      {
+        "id": 9,
+        "question": "Which technology standard is used for wireless internet connections?",
+        "options": ["Bluetooth", "Wi-Fi", "4G", "NFC"],
+        "correct": 1,
+        "explanation": "Wi-Fi is the technology standard used for wireless internet connections, based on the IEEE 802.11 family of standards."
+      },
+      {
+        "id": 10,
+        "question": "What was the first commercially successful video game?",
+        "options": ["Space Invaders", "Pac-Man", "Pong", "Asteroids"],
+        "correct": 2,
+        "explanation": "Pong (1972) by Atari is considered the first commercially successful video game, though 'Computer Space' predated it."
+      }
+    ]
+  }
+}
