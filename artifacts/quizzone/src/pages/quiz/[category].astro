@@ -1,459 +1,421 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import AdPlaceholder from '@components/AdPlaceholder.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 import questions from '@data/questions.json';
 
 export async function getStaticPaths() {
-  return Object.keys(questions).map((slug) => ({
-    params: { category: slug },
-  }));
+  return Object.keys(questions).map((slug) => ({ params: { category: slug } }));
 }
 
 const { category } = Astro.params;
 const categoryData = questions[category as keyof typeof questions];
-
-if (!categoryData) {
-  return Astro.redirect('/categories');
-}
+if (!categoryData) return Astro.redirect('/categories');
 
 const quizQuestions = categoryData.questions;
 const questionsJson = JSON.stringify(quizQuestions);
+
+const gradients: Record<string, string> = {
+  'general-knowledge': 'linear-gradient(135deg,#3b82f6,#1d4ed8)',
+  'science-nature':    'linear-gradient(135deg,#10b981,#047857)',
+  'history':           'linear-gradient(135deg,#f59e0b,#b45309)',
+  'geography':         'linear-gradient(135deg,#06b6d4,#0e7490)',
+  'entertainment':     'linear-gradient(135deg,#ec4899,#9333ea)',
+  'sports':            'linear-gradient(135deg,#f97316,#c2410c)',
+  'technology':        'linear-gradient(135deg,#6366f1,#4338ca)',
+  'food-drink':        'linear-gradient(135deg,#ef4444,#b91c1c)',
+};
+const bg = gradients[category] || 'linear-gradient(135deg,#6366f1,#4338ca)';
 ---
 
 <Layout
-  title={`${categoryData.name} Quiz — 10 Questions | QuizZone`}
-  description={`Take the ${categoryData.name} trivia quiz on QuizZone. ${categoryData.description} 10 questions, timer included.`}
-  canonical={`/quiz/${category}`}
+  title={`${categoryData.name} Trivia Quiz — 10 Questions | QuizZone`}
+  description={`Play the ${categoryData.name} quiz on QuizZone. ${categoryData.description} 10 questions with timer and instant scoring.`}
 >
-  <!-- Structured Data for Quiz -->
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Quiz",
-      "name": `${categoryData.name} Trivia Quiz`,
-      "description": categoryData.description,
-      "url": `https://quizzone.replit.app/quiz/${category}`,
-      "educationalLevel": "general",
-      "numberOfQuestions": quizQuestions.length,
-    })}
-  </script>
+  <Header />
 
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+  <!-- Breadcrumb -->
+  <div style="background:white;border-bottom:1px solid #e5e7eb;">
+    <div style="max-width:1200px;margin:0 auto;padding:10px 16px;font-size:13px;color:#6b7280;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+      <a href="/" style="color:#7c3aed;font-weight:600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a>
+      <span>›</span>
+      <a href="/categories" style="color:#7c3aed;font-weight:600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Categories</a>
+      <span>›</span>
+      <span style="color:#374151;font-weight:600;">{categoryData.name}</span>
+    </div>
+  </div>
 
-      <!-- Quiz Header Info (shown before start) -->
-      <div id="quiz-intro" class="text-center mb-8">
-        <div class={`w-20 h-20 rounded-2xl bg-gradient-to-br ${categoryData.color} flex items-center justify-center text-4xl mx-auto mb-5 shadow-lg`}>
+  <!-- Page wrapper -->
+  <div style="background:#f0f2f5;min-height:calc(100vh - 180px);padding:24px 16px 48px;">
+    <div style="max-width:720px;margin:0 auto;">
+
+      <!-- INTRO SCREEN -->
+      <div id="quiz-intro" style="text-align:center;animation:fadeIn 0.4s ease both;">
+        <!-- Category icon card -->
+        <div style={`width:90px;height:90px;background:${bg};border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(0,0,0,0.2);`}>
           {categoryData.icon}
         </div>
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">{categoryData.name} Quiz</h1>
-        <p class="text-gray-500 text-lg mb-6">{categoryData.description}</p>
-        <div class="flex flex-wrap justify-center gap-4 text-sm mb-8">
-          <div class="flex items-center gap-2 bg-white rounded-xl px-4 py-2 shadow-sm border border-gray-100">
-            <span class="text-blue-500">❓</span>
-            <span class="font-medium text-gray-700">10 Questions</span>
-          </div>
-          <div class="flex items-center gap-2 bg-white rounded-xl px-4 py-2 shadow-sm border border-gray-100">
-            <span class="text-orange-500">⏱️</span>
-            <span class="font-medium text-gray-700">30 sec per question</span>
-          </div>
-          <div class="flex items-center gap-2 bg-white rounded-xl px-4 py-2 shadow-sm border border-gray-100">
-            <span class="text-green-500">🏆</span>
-            <span class="font-medium text-gray-700">Score tracking</span>
-          </div>
+        <h1 style="font-size:clamp(24px,5vw,36px);font-weight:900;color:#111827;letter-spacing:-0.5px;margin-bottom:8px;">{categoryData.name} Quiz</h1>
+        <p style="font-size:15px;color:#6b7280;max-width:380px;margin:0 auto 24px;">{categoryData.description}</p>
+
+        <!-- Info pills -->
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px;">
+          {[['❓','10 Questions'],['⏱️','30 sec per Q'],['🏆','Score tracking'],['💡','Explanations']].map(([icon, label]) => (
+            <div style="display:flex;align-items:center;gap:6px;background:white;border:1px solid #e5e7eb;border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+              <span>{icon}</span><span>{label}</span>
+            </div>
+          ))}
         </div>
+
         <button
           id="start-btn"
-          class="inline-flex items-center gap-2 px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all text-lg"
+          style={`display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:${bg};color:white;font-size:17px;font-weight:800;border:none;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.2);cursor:pointer;transition:all 0.2s;letter-spacing:-0.2px;`}
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(0,0,0,0.25)';"
+          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)';"
         >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
-          </svg>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" /></svg>
           Start Quiz
         </button>
       </div>
 
-      <!-- Quiz Card (hidden until started) -->
-      <div id="quiz-container" class="hidden animate-fade-in">
+      <!-- QUIZ SCREEN -->
+      <div id="quiz-screen" style="display:none;animation:fadeIn 0.3s ease both;">
 
-        <!-- Progress Bar -->
-        <div class="mb-6">
-          <div class="flex justify-between items-center mb-2">
-            <span id="question-counter" class="text-sm font-semibold text-gray-600">Question 1 of 10</span>
-            <span id="score-display" class="text-sm font-semibold text-blue-600">Score: 0</span>
+        <!-- Top bar: progress + score -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;">
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span id="q-counter" style="font-size:13px;font-weight:700;color:#4b5563;">Question 1 / 10</span>
+              <span id="q-score" style="font-size:13px;font-weight:700;color:#7c3aed;">Score: 0</span>
+            </div>
+            <div style="height:6px;background:#e5e7eb;border-radius:100px;overflow:hidden;">
+              <div id="q-progress" style={`height:100%;border-radius:100px;transition:width 0.4s ease;width:10%;background:${bg};`}></div>
+            </div>
           </div>
-          <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
-            <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 10%"></div>
+
+          <!-- Timer circle -->
+          <div id="timer-wrap" style="width:54px;height:54px;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;">
+            <svg width="54" height="54" viewBox="0 0 54 54" style="transform:rotate(-90deg);position:absolute;">
+              <circle cx="27" cy="27" r="22" fill="none" stroke="#e5e7eb" stroke-width="4" />
+              <circle id="timer-ring" cx="27" cy="27" r="22" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"
+                stroke-dasharray="138.2" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear, stroke 0.5s;" />
+            </svg>
+            <span id="timer-text" style="font-size:16px;font-weight:800;color:#111827;z-index:1;">30</span>
           </div>
         </div>
 
-        <!-- Timer + Question -->
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <!-- Timer bar -->
-          <div class="px-6 pt-5 pb-4 border-b border-gray-50">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Time Remaining</span>
-              <span id="timer-text" class="text-lg font-bold text-gray-900">30s</span>
-            </div>
-            <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
-              <div id="timer-bar" class="h-2 rounded-full transition-all duration-1000" style="width: 100%; background-color: #22c55e;"></div>
-            </div>
-          </div>
-
-          <!-- Question -->
-          <div class="px-6 py-6">
-            <p id="question-text" class="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-8"></p>
-
-            <!-- Answer Options -->
-            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <!-- Options injected by JS -->
-            </div>
-
-            <!-- Explanation (shown after answering) -->
-            <div id="explanation-box" class="hidden mt-6 p-4 bg-blue-50 border border-blue-100 rounded-xl">
-              <p class="text-sm font-semibold text-blue-800 mb-1">💡 Did you know?</p>
-              <p id="explanation-text" class="text-sm text-blue-700 leading-relaxed"></p>
-            </div>
-          </div>
-
-          <!-- Navigation -->
-          <div class="px-6 pb-6 flex justify-between items-center gap-3">
-            <button
-              id="prev-btn"
-              class="px-5 py-2.5 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 font-semibold rounded-xl transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
-              disabled
-            >
-              ← Previous
-            </button>
-            <button
-              id="next-btn"
-              class="hidden px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors text-sm"
-            >
-              Next →
-            </button>
-            <button
-              id="submit-btn"
-              class="hidden px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors text-sm"
-            >
-              Finish Quiz ✓
-            </button>
-          </div>
+        <!-- Question card -->
+        <div style="background:white;border-radius:16px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin-bottom:14px;">
+          <p id="q-text" style="font-size:clamp(17px,3vw,22px);font-weight:700;color:#111827;line-height:1.5;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;"></p>
         </div>
 
-        <!-- Ad during quiz -->
-        <div class="mt-6">
-          <AdPlaceholder type="content" />
+        <!-- Answer buttons (2x2 grid) -->
+        <div id="options-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <!-- Injected by JS -->
+        </div>
+
+        <!-- Explanation box -->
+        <div id="explain-box" style="display:none;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:14px 16px;margin-bottom:16px;animation:fadeIn 0.3s ease;">
+          <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:4px;">💡 Explanation</div>
+          <p id="explain-text" style="font-size:13px;color:#15803d;line-height:1.6;"></p>
+        </div>
+
+        <!-- Nav buttons -->
+        <div style="display:flex;justify-content:space-between;gap:12px;">
+          <button id="prev-btn" style="padding:11px 20px;background:white;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;font-weight:700;color:#4b5563;cursor:pointer;transition:all 0.15s;" disabled
+            onmouseover="if(!this.disabled){this.style.borderColor='#7c3aed';this.style.color='#7c3aed';}"
+            onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#4b5563';">
+            ← Prev
+          </button>
+          <button id="next-btn" style="display:none;padding:11px 28px;background:linear-gradient(135deg,#a855f7,#7c3aed);border:none;border-radius:10px;font-size:14px;font-weight:800;color:white;cursor:pointer;box-shadow:0 4px 12px rgba(124,58,237,0.35);transition:all 0.15s;"
+            onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+            Next →
+          </button>
+          <button id="finish-btn" style="display:none;padding:11px 28px;background:linear-gradient(135deg,#22c55e,#15803d);border:none;border-radius:10px;font-size:14px;font-weight:800;color:white;cursor:pointer;box-shadow:0 4px 12px rgba(34,197,94,0.35);transition:all 0.15s;"
+            onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+            Finish Quiz ✓
+          </button>
+        </div>
+
+        <!-- Mid-quiz ad -->
+        <div style="margin-top:20px;border:1px dashed #d1d5db;border-radius:8px;padding:12px;text-align:center;font-size:12px;color:#9ca3af;background:white;">
+          [Advertisement — In-content 728×90]
         </div>
       </div>
 
-      <!-- Results (hidden until finished) -->
-      <div id="results-container" class="hidden animate-fade-in">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">
-          <div id="result-emoji" class="text-6xl mb-4">🎉</div>
-          <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Quiz Complete!</h2>
-          <p id="result-message" class="text-gray-500 mb-8"></p>
+      <!-- RESULTS SCREEN -->
+      <div id="results-screen" style="display:none;animation:popIn 0.4s ease both;">
+        <!-- Score card -->
+        <div style="background:white;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);margin-bottom:20px;">
+          <div id="result-emoji" style="font-size:64px;margin-bottom:12px;line-height:1;">🏆</div>
+          <h2 style="font-size:28px;font-weight:900;color:#111827;margin-bottom:6px;">Quiz Complete!</h2>
+          <p id="result-msg" style="font-size:15px;color:#6b7280;margin-bottom:28px;"></p>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-            <div class="bg-blue-50 rounded-xl p-4">
-              <div id="result-score" class="text-3xl font-extrabold text-blue-600"></div>
-              <div class="text-xs text-gray-500 mt-1">Final Score</div>
+          <!-- Stats grid -->
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;" class="stats-grid">
+            <div style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:14px;padding:18px;">
+              <div id="res-score" style="font-size:32px;font-weight:900;color:#7c3aed;"></div>
+              <div style="font-size:12px;color:#7c3aed;font-weight:600;margin-top:2px;">POINTS</div>
             </div>
-            <div class="bg-green-50 rounded-xl p-4">
-              <div id="result-correct" class="text-3xl font-extrabold text-green-600"></div>
-              <div class="text-xs text-gray-500 mt-1">Correct</div>
+            <div style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-radius:14px;padding:18px;">
+              <div id="res-correct" style="font-size:32px;font-weight:900;color:#16a34a;"></div>
+              <div style="font-size:12px;color:#16a34a;font-weight:600;margin-top:2px;">CORRECT</div>
             </div>
-            <div class="bg-red-50 rounded-xl p-4">
-              <div id="result-incorrect" class="text-3xl font-extrabold text-red-500"></div>
-              <div class="text-xs text-gray-500 mt-1">Incorrect</div>
+            <div style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-radius:14px;padding:18px;">
+              <div id="res-wrong" style="font-size:32px;font-weight:900;color:#dc2626;"></div>
+              <div style="font-size:12px;color:#dc2626;font-weight:600;margin-top:2px;">INCORRECT</div>
             </div>
-            <div class="bg-orange-50 rounded-xl p-4">
-              <div id="result-time" class="text-3xl font-extrabold text-orange-500"></div>
-              <div class="text-xs text-gray-500 mt-1">Time Taken</div>
+            <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;padding:18px;">
+              <div id="res-time" style="font-size:32px;font-weight:900;color:#d97706;"></div>
+              <div style="font-size:12px;color:#d97706;font-weight:600;margin-top:2px;">SECONDS</div>
             </div>
           </div>
 
-          <!-- Score percentage bar -->
-          <div class="mb-8">
-            <div class="flex justify-between text-sm mb-2">
-              <span class="text-gray-500">Accuracy</span>
-              <span id="result-percent" class="font-bold text-gray-900"></span>
+          <!-- Accuracy bar -->
+          <div style="margin-bottom:28px;text-align:left;">
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:8px;">
+              <span style="color:#374151;">Accuracy</span>
+              <span id="res-pct" style="color:#7c3aed;"></span>
             </div>
-            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-              <div id="result-percent-bar" class="h-3 rounded-full bg-blue-600 transition-all duration-1000" style="width: 0%"></div>
+            <div style="height:10px;background:#e5e7eb;border-radius:100px;overflow:hidden;">
+              <div id="res-pct-bar" style="height:100%;border-radius:100px;background:linear-gradient(90deg,#a855f7,#7c3aed);transition:width 0.8s ease;width:0%;"></div>
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              id="play-again-btn"
-              class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors shadow-md"
-            >
-              Play Again
+          <!-- Action buttons -->
+          <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+            <button id="play-again-btn" style="padding:12px 24px;background:linear-gradient(135deg,#a855f7,#7c3aed);border:none;border-radius:10px;color:white;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 12px rgba(124,58,237,0.35);transition:all 0.15s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+              🔄 Play Again
             </button>
-            <a
-              href="/categories"
-              class="px-6 py-3 border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition-colors text-center"
-            >
-              Try Another Category
+            <a href="/categories" style="padding:12px 24px;background:white;border:2px solid #e5e7eb;border-radius:10px;color:#374151;font-size:14px;font-weight:700;transition:all 0.15s;display:inline-block;" onmouseover="this.style.borderColor='#7c3aed';this.style.color='#7c3aed';" onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#374151';">
+              🎯 Other Categories
             </a>
-            <button
-              id="share-btn"
-              class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-colors shadow-md"
-            >
-              Share Score 🔗
+            <button id="share-btn" style="padding:12px 24px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);border:none;border-radius:10px;color:white;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 12px rgba(59,130,246,0.35);transition:all 0.15s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+              🔗 Share Score
             </button>
           </div>
         </div>
 
         <!-- Answer Review -->
-        <div class="mt-8">
-          <h3 class="text-xl font-extrabold text-gray-900 mb-4">Answer Review</h3>
-          <div id="review-container" class="space-y-4"></div>
+        <div style="background:white;border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <h3 style="font-size:17px;font-weight:800;color:#111827;margin-bottom:16px;">Answer Review</h3>
+          <div id="review-list" style="display:flex;flex-direction:column;gap:12px;"></div>
         </div>
       </div>
 
     </div>
   </div>
+
+  <Footer />
 </Layout>
 
-<script define:vars={{ questionsJson, categoryName: categoryData.name }}>
-  const QUESTIONS = JSON.parse(questionsJson);
+<style>
+  @media (min-width: 520px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  }
+</style>
+
+<script define:vars={{ questionsJson, categoryName: categoryData.name, bgGradient: bg }}>
+  const QS = JSON.parse(questionsJson);
   const TOTAL = 10;
-  const TIME_PER_Q = 30;
+  const TIME = 30;
+  const CIRC = 2 * Math.PI * 22; // 138.2
 
-  let currentIndex = 0;
-  let score = 0;
-  let answers = new Array(TOTAL).fill(null);
-  let startTime = 0;
-  let timer = null;
-  let timeLeft = TIME_PER_Q;
-  let questionStartTimes = [];
-  let totalElapsed = 0;
+  let idx = 0, score = 0, startMs = 0, timerInterval = null, timeLeft = TIME;
+  let answers = Array(TOTAL).fill(null);
 
+  // DOM refs
   const introEl = document.getElementById('quiz-intro');
-  const quizEl = document.getElementById('quiz-container');
-  const resultsEl = document.getElementById('results-container');
-  const startBtn = document.getElementById('start-btn');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const submitBtn = document.getElementById('submit-btn');
-  const playAgainBtn = document.getElementById('play-again-btn');
-  const shareBtn = document.getElementById('share-btn');
-  const timerBar = document.getElementById('timer-bar');
-  const timerText = document.getElementById('timer-text');
-  const progressBar = document.getElementById('progress-bar');
-  const questionCounter = document.getElementById('question-counter');
-  const scoreDisplay = document.getElementById('score-display');
-  const questionText = document.getElementById('question-text');
-  const optionsContainer = document.getElementById('options-container');
-  const explanationBox = document.getElementById('explanation-box');
-  const explanationText = document.getElementById('explanation-text');
-  const reviewContainer = document.getElementById('review-container');
+  const quizEl  = document.getElementById('quiz-screen');
+  const resEl   = document.getElementById('results-screen');
+
+  const startBtn    = document.getElementById('start-btn');
+  const prevBtn     = document.getElementById('prev-btn');
+  const nextBtn     = document.getElementById('next-btn');
+  const finishBtn   = document.getElementById('finish-btn');
+  const againBtn    = document.getElementById('play-again-btn');
+  const shareBtn    = document.getElementById('share-btn');
+
+  const qCounter    = document.getElementById('q-counter');
+  const qScore      = document.getElementById('q-score');
+  const qProgress   = document.getElementById('q-progress');
+  const timerRing   = document.getElementById('timer-ring');
+  const timerText   = document.getElementById('timer-text');
+  const qText       = document.getElementById('q-text');
+  const optWrap     = document.getElementById('options-wrap');
+  const explainBox  = document.getElementById('explain-box');
+  const explainText = document.getElementById('explain-text');
+  const reviewList  = document.getElementById('review-list');
+
+  function show(el) { el.style.display = 'block'; }
+  function hide(el) { el.style.display = 'none'; }
 
   function startQuiz() {
-    introEl.classList.add('hidden');
-    quizEl.classList.remove('hidden');
-    startTime = Date.now();
-    loadQuestion();
+    hide(introEl); show(quizEl);
+    startMs = Date.now();
+    renderQ();
   }
 
-  function loadQuestion() {
-    const q = QUESTIONS[currentIndex];
-    const hasAnswered = answers[currentIndex] !== null;
+  function renderQ() {
+    const q = QS[idx];
+    const answered = answers[idx] !== null;
 
-    questionCounter.textContent = `Question ${currentIndex + 1} of ${TOTAL}`;
-    scoreDisplay.textContent = `Score: ${score}`;
-    progressBar.style.width = `${((currentIndex + 1) / TOTAL) * 100}%`;
-    questionText.textContent = q.question;
+    qCounter.textContent = `Question ${idx + 1} / ${TOTAL}`;
+    qScore.textContent = `Score: ${score}`;
+    qProgress.style.width = `${((idx + 1) / TOTAL) * 100}%`;
+    qProgress.style.background = bgGradient;
+    qText.textContent = q.question;
 
-    optionsContainer.innerHTML = '';
+    // Options
+    optWrap.innerHTML = '';
+    const letters = ['A','B','C','D'];
     q.options.forEach((opt, i) => {
       const btn = document.createElement('button');
-      btn.className = getOptionClass(i, hasAnswered, q.correct);
-      btn.textContent = `${String.fromCharCode(65 + i)}) ${opt}`;
-      btn.dataset.index = i;
-      if (!hasAnswered) {
-        btn.addEventListener('click', () => selectAnswer(i));
+      btn.style.cssText = getOptionStyle(i, answered, q.correct);
+      btn.innerHTML = `<span style="width:28px;height:28px;border-radius:8px;background:${getBadgeBg(i,answered,q.correct)};color:${getBadgeColor(i,answered,q.correct)};font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${letters[i]}</span><span style="flex:1;text-align:left;">${opt}</span>`;
+      if (!answered) {
+        btn.addEventListener('click', () => pick(i));
+        btn.addEventListener('mouseenter', () => { if(answers[idx]===null) btn.style.cssText = optHover; });
+        btn.addEventListener('mouseleave', () => { if(answers[idx]===null) btn.style.cssText = getOptionStyle(i, false, q.correct); });
       }
-      optionsContainer.appendChild(btn);
+      optWrap.appendChild(btn);
     });
 
-    if (hasAnswered) {
-      showExplanation();
-      clearTimerDisplay();
+    // Explanation
+    if (answered) {
+      explainText.textContent = q.explanation;
+      show(explainBox);
+      stopTimer();
     } else {
-      explanationBox.classList.add('hidden');
+      hide(explainBox);
       startTimer();
     }
 
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.classList.toggle('hidden', currentIndex === TOTAL - 1 || !hasAnswered);
-    submitBtn.classList.toggle('hidden', currentIndex !== TOTAL - 1 || !hasAnswered);
+    // Nav
+    prevBtn.disabled = idx === 0;
+    prevBtn.style.opacity = idx === 0 ? '0.4' : '1';
+    nextBtn.style.display = (answered && idx < TOTAL - 1) ? 'block' : 'none';
+    finishBtn.style.display = (answered && idx === TOTAL - 1) ? 'block' : 'none';
   }
 
-  function getOptionClass(index, hasAnswered, correct) {
-    const base = 'w-full text-left px-5 py-4 rounded-xl border-2 font-medium text-sm transition-all duration-200 ';
-    if (!hasAnswered) {
-      return base + 'border-gray-100 bg-gray-50 hover:border-blue-300 hover:bg-blue-50 text-gray-700 cursor-pointer';
-    }
-    const userAnswer = answers[currentIndex];
-    if (index === correct) return base + 'border-green-400 bg-green-50 text-green-800 cursor-default';
-    if (index === userAnswer && index !== correct) return base + 'border-red-400 bg-red-50 text-red-800 cursor-default';
-    return base + 'border-gray-100 bg-gray-50 text-gray-400 cursor-default opacity-60';
+  const optBase = `display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:600;width:100%;text-align:left;cursor:pointer;border:2px solid #e5e7eb;background:white;color:#1f2937;transition:all 0.15s;line-height:1.4;`;
+  const optHover = `display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:600;width:100%;text-align:left;cursor:pointer;border:2px solid #a855f7;background:#faf5ff;color:#7c3aed;transition:all 0.15s;line-height:1.4;transform:translateY(-1px);box-shadow:0 4px 12px rgba(168,85,247,0.2);`;
+
+  function getOptionStyle(i, answered, correct) {
+    if (!answered) return optBase;
+    if (i === correct) return `display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:700;width:100%;border:2px solid #22c55e;background:#f0fdf4;color:#15803d;cursor:default;line-height:1.4;`;
+    if (i === answers[idx] && i !== correct) return `display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:700;width:100%;border:2px solid #ef4444;background:#fef2f2;color:#dc2626;cursor:default;line-height:1.4;`;
+    return `display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:600;width:100%;border:2px solid #e5e7eb;background:#f9fafb;color:#9ca3af;cursor:default;line-height:1.4;opacity:0.6;`;
   }
 
-  function selectAnswer(idx) {
-    if (answers[currentIndex] !== null) return;
-    clearInterval(timer);
-
-    const q = QUESTIONS[currentIndex];
-    answers[currentIndex] = idx;
-    if (idx === q.correct) {
-      score += Math.max(1, Math.ceil(timeLeft / 3));
-    }
-
-    const btns = optionsContainer.querySelectorAll('button');
-    btns.forEach((btn, i) => {
-      btn.className = getOptionClass(i, true, q.correct);
-      btn.replaceWith(btn.cloneNode(true));
-    });
-
-    showExplanation();
-    clearTimerDisplay();
-
-    nextBtn.classList.toggle('hidden', currentIndex === TOTAL - 1);
-    submitBtn.classList.toggle('hidden', currentIndex !== TOTAL - 1);
-    scoreDisplay.textContent = `Score: ${score}`;
+  function getBadgeBg(i, answered, correct) {
+    if (!answered) return '#f3f4f6';
+    if (i === correct) return '#22c55e';
+    if (i === answers[idx] && i !== correct) return '#ef4444';
+    return '#e5e7eb';
   }
 
-  function showExplanation() {
-    const q = QUESTIONS[currentIndex];
-    explanationText.textContent = q.explanation;
-    explanationBox.classList.remove('hidden');
+  function getBadgeColor(i, answered, correct) {
+    if (!answered) return '#6b7280';
+    if (i === correct) return 'white';
+    if (i === answers[idx] && i !== correct) return 'white';
+    return '#9ca3af';
+  }
+
+  function pick(i) {
+    if (answers[idx] !== null) return;
+    stopTimer();
+    const q = QS[idx];
+    answers[idx] = i;
+    if (i === q.correct) score += Math.max(1, Math.ceil(timeLeft * 3));
+    renderQ();
   }
 
   function startTimer() {
-    clearInterval(timer);
-    timeLeft = TIME_PER_Q;
-    updateTimerUI();
-
-    timer = setInterval(() => {
+    stopTimer();
+    timeLeft = TIME;
+    updateTimer();
+    timerInterval = setInterval(() => {
       timeLeft--;
-      updateTimerUI();
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        if (answers[currentIndex] === null) {
-          selectAnswer(-1);
-        }
-      }
+      updateTimer();
+      if (timeLeft <= 0) { stopTimer(); pick(-1); }
     }, 1000);
   }
 
-  function updateTimerUI() {
-    timerText.textContent = `${timeLeft}s`;
-    const pct = (timeLeft / TIME_PER_Q) * 100;
-    timerBar.style.width = `${pct}%`;
-    if (pct > 60) timerBar.style.backgroundColor = '#22c55e';
-    else if (pct > 30) timerBar.style.backgroundColor = '#f59e0b';
-    else timerBar.style.backgroundColor = '#ef4444';
+  function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
   }
 
-  function clearTimerDisplay() {
-    clearInterval(timer);
-    timerText.textContent = '—';
-    timerBar.style.width = '0%';
+  function updateTimer() {
+    timerText.textContent = timeLeft;
+    const pct = timeLeft / TIME;
+    const offset = CIRC * (1 - pct);
+    timerRing.style.strokeDashoffset = offset;
+    timerRing.style.stroke = pct > 0.6 ? '#22c55e' : pct > 0.3 ? '#f59e0b' : '#ef4444';
   }
 
   function showResults() {
-    clearInterval(timer);
-    totalElapsed = Math.round((Date.now() - startTime) / 1000);
-    const correctCount = answers.filter((a, i) => a === QUESTIONS[i].correct).length;
-    const incorrectCount = TOTAL - correctCount;
-    const pct = Math.round((correctCount / TOTAL) * 100);
+    stopTimer();
+    const elapsed = Math.round((Date.now() - startMs) / 1000);
+    const correct = answers.filter((a, i) => a === QS[i].correct).length;
+    const wrong = TOTAL - correct;
+    const pct = Math.round((correct / TOTAL) * 100);
 
-    quizEl.classList.add('hidden');
-    resultsEl.classList.remove('hidden');
+    hide(quizEl); show(resEl);
 
-    document.getElementById('result-score').textContent = score;
-    document.getElementById('result-correct').textContent = correctCount;
-    document.getElementById('result-incorrect').textContent = incorrectCount;
-    document.getElementById('result-time').textContent = `${totalElapsed}s`;
-    document.getElementById('result-percent').textContent = `${pct}%`;
+    document.getElementById('res-score').textContent = score;
+    document.getElementById('res-correct').textContent = correct;
+    document.getElementById('res-wrong').textContent = wrong;
+    document.getElementById('res-time').textContent = elapsed;
+    document.getElementById('res-pct').textContent = pct + '%';
 
     const emoji = pct >= 90 ? '🏆' : pct >= 70 ? '🎉' : pct >= 50 ? '😊' : '💪';
-    const message = pct >= 90 ? 'Outstanding! You nailed it!' : pct >= 70 ? 'Great job! Well done!' : pct >= 50 ? 'Not bad — keep practicing!' : 'Keep going — you\'ll improve!';
+    const msg   = pct >= 90 ? 'Outstanding! Perfect knowledge!' : pct >= 70 ? 'Great work! Well done!' : pct >= 50 ? 'Good effort — keep practicing!' : "Don't give up — try again!";
     document.getElementById('result-emoji').textContent = emoji;
-    document.getElementById('result-message').textContent = message;
+    document.getElementById('result-msg').textContent = msg;
 
-    setTimeout(() => {
-      document.getElementById('result-percent-bar').style.width = `${pct}%`;
-    }, 100);
+    setTimeout(() => { document.getElementById('res-pct-bar').style.width = pct + '%'; }, 100);
 
     // Build review
-    reviewContainer.innerHTML = '';
-    QUESTIONS.forEach((q, i) => {
-      const userAns = answers[i];
-      const isCorrect = userAns === q.correct;
+    reviewList.innerHTML = '';
+    QS.forEach((q, i) => {
+      const ok = answers[i] === q.correct;
       const div = document.createElement('div');
-      div.className = `p-5 rounded-xl border-2 ${isCorrect ? 'border-green-200 bg-green-50' : 'border-red-100 bg-red-50'}`;
+      div.style.cssText = `padding:14px;border-radius:12px;border:2px solid ${ok ? '#bbf7d0' : '#fecaca'};background:${ok ? '#f0fdf4' : '#fef2f2'};`;
       div.innerHTML = `
-        <div class="flex items-start gap-3">
-          <span class="text-xl mt-0.5">${isCorrect ? '✅' : '❌'}</span>
-          <div class="flex-1 min-w-0">
-            <p class="font-semibold text-gray-900 text-sm leading-snug mb-2">${i + 1}. ${q.question}</p>
-            ${!isCorrect ? `<p class="text-xs text-red-600 mb-1">Your answer: ${userAns >= 0 ? q.options[userAns] : 'No answer'}</p>` : ''}
-            <p class="text-xs ${isCorrect ? 'text-green-700' : 'text-green-700'} mb-2">Correct: ${q.options[q.correct]}</p>
-            <p class="text-xs text-gray-500 leading-relaxed">${q.explanation}</p>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;margin-top:1px;">${ok ? '✅' : '❌'}</span>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:14px;font-weight:700;color:#111827;line-height:1.5;margin-bottom:6px;">${i + 1}. ${q.question}</p>
+            ${!ok && answers[i] >= 0 ? `<p style="font-size:12px;color:#dc2626;margin-bottom:4px;">Your answer: <b>${q.options[answers[i]]}</b></p>` : (!ok ? '<p style="font-size:12px;color:#dc2626;margin-bottom:4px;">No answer (time expired)</p>' : '')}
+            <p style="font-size:12px;color:#15803d;margin-bottom:6px;">✓ Correct: <b>${q.options[q.correct]}</b></p>
+            <p style="font-size:12px;color:#6b7280;line-height:1.6;">${q.explanation}</p>
           </div>
-        </div>
-      `;
-      reviewContainer.appendChild(div);
+        </div>`;
+      reviewList.appendChild(div);
     });
   }
 
+  // Event listeners
   startBtn.addEventListener('click', startQuiz);
+  prevBtn.addEventListener('click', () => { if (idx > 0) { stopTimer(); idx--; renderQ(); }});
+  nextBtn.addEventListener('click', () => { if (idx < TOTAL - 1) { stopTimer(); idx++; renderQ(); }});
+  finishBtn.addEventListener('click', showResults);
 
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      clearInterval(timer);
-      currentIndex--;
-      loadQuestion();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < TOTAL - 1) {
-      clearInterval(timer);
-      currentIndex++;
-      loadQuestion();
-    }
-  });
-
-  submitBtn.addEventListener('click', showResults);
-
-  playAgainBtn.addEventListener('click', () => {
-    currentIndex = 0;
-    score = 0;
-    answers = new Array(TOTAL).fill(null);
-    startTime = 0;
-    totalElapsed = 0;
-    resultsEl.classList.add('hidden');
-    quizEl.classList.remove('hidden');
-    startTime = Date.now();
-    loadQuestion();
+  againBtn.addEventListener('click', () => {
+    idx = 0; score = 0; answers = Array(TOTAL).fill(null); startMs = 0;
+    hide(resEl); show(quizEl); startMs = Date.now(); renderQ();
   });
 
   shareBtn.addEventListener('click', () => {
-    const correctCount = answers.filter((a, i) => a === QUESTIONS[i].correct).length;
-    const pct = Math.round((correctCount / TOTAL) * 100);
-    const text = `I scored ${pct}% on the ${categoryName} quiz on QuizZone! Can you beat me? 🧠 Try it at ${window.location.href}`;
-    if (navigator.share) {
-      navigator.share({ title: 'QuizZone Result', text, url: window.location.href });
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(() => {
-        shareBtn.textContent = '✅ Copied!';
-        setTimeout(() => { shareBtn.textContent = 'Share Score 🔗'; }, 2000);
-      });
-    }
+    const correct = answers.filter((a, i) => a === QS[i].correct).length;
+    const pct = Math.round((correct / TOTAL) * 100);
+    const text = `I scored ${pct}% on the ${categoryName} quiz on QuizZone! 🧠 Try it: ${location.href}`;
+    if (navigator.share) navigator.share({ title: 'QuizZone', text, url: location.href });
+    else navigator.clipboard?.writeText(text).then(() => {
+      shareBtn.textContent = '✅ Copied!';
+      setTimeout(() => { shareBtn.textContent = '🔗 Share Score'; }, 2000);
+    });
   });
 </script>

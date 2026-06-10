@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import CategoryCard from '@components/CategoryCard.astro';
-import AdPlaceholder from '@components/AdPlaceholder.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 import questions from '@data/questions.json';
 
 const categories = Object.entries(questions).map(([slug, cat]) => ({
@@ -10,167 +10,209 @@ const categories = Object.entries(questions).map(([slug, cat]) => ({
   icon: cat.icon,
   color: cat.color,
   description: cat.description,
-  quizCount: cat.quizCount,
-  questionCount: cat.questions.length,
+  quizCount: cat.questions.length,
 }));
 
-const stats = [
-  { label: 'Free Quizzes', value: '100+' },
-  { label: 'Categories', value: `${categories.length}` },
-  { label: 'Players Worldwide', value: '50K+' },
-  { label: 'Questions', value: '800+' },
+const popularQuizzes = [
+  { name: 'General Knowledge Quiz 1', slug: 'general-knowledge', difficulty: 'Easy' },
+  { name: 'Science & Nature Basics', slug: 'science-nature', difficulty: 'Medium' },
+  { name: 'World History Challenge', slug: 'history', difficulty: 'Hard' },
+  { name: 'Geography Master', slug: 'geography', difficulty: 'Medium' },
+  { name: 'Sports Legends', slug: 'sports', difficulty: 'Easy' },
+  { name: 'Tech & Computers', slug: 'technology', difficulty: 'Medium' },
+  { name: 'Food & Cuisine', slug: 'food-drink', difficulty: 'Easy' },
+  { name: 'Entertainment Trivia', slug: 'entertainment', difficulty: 'Easy' },
 ];
+
+const gradients: Record<string, string> = {
+  'general-knowledge': 'linear-gradient(135deg,#3b82f6,#1d4ed8)',
+  'science-nature':    'linear-gradient(135deg,#10b981,#047857)',
+  'history':           'linear-gradient(135deg,#f59e0b,#b45309)',
+  'geography':         'linear-gradient(135deg,#06b6d4,#0e7490)',
+  'entertainment':     'linear-gradient(135deg,#ec4899,#9333ea)',
+  'sports':            'linear-gradient(135deg,#f97316,#c2410c)',
+  'technology':        'linear-gradient(135deg,#6366f1,#4338ca)',
+  'food-drink':        'linear-gradient(135deg,#ef4444,#b91c1c)',
+};
 ---
 
-<Layout
-  title="Free Online Trivia Quiz | QuizZone"
-  description="Play free online trivia quizzes covering general knowledge, history, science, geography, entertainment, sports, and more. Test your knowledge on QuizZone!"
->
-  <!-- Top Banner Ad -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-    <AdPlaceholder type="banner" />
+<Layout title="Free Online Trivia Quizzes | QuizZone" description="Play free online trivia quizzes on QuizZone. Choose from General Knowledge, History, Science, Geography, Sports and more. 10 questions per quiz with instant scoring!">
+  <Header />
+
+  <!-- Top Ad Banner -->
+  <div style="background:#e8eaf0;border-bottom:1px solid #d1d5db;">
+    <div style="max-width:1200px;margin:0 auto;padding:8px 16px;text-align:center;">
+      <div style="border:1px dashed #9ca3af;border-radius:6px;padding:12px;font-size:12px;color:#6b7280;background:white;">
+        [Advertisement — Top Banner 728×90]
+      </div>
+    </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white" aria-label="Hero">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 w-80 h-80 bg-indigo-300 rounded-full blur-3xl"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-6">
-        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-        100+ free quizzes available
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#2d1b69 0%,#1e0a4e 60%,#0f0528 100%);color:white;padding:36px 16px;">
+    <div style="max-width:1200px;margin:0 auto;text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:18px;">
+        <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:pulse-ring 2s infinite;"></span>
+        {categories.length * 10}+ free questions available
       </div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-        Free Online<br class="hidden sm:block" />
-        <span class="text-yellow-300">Trivia Quiz</span>
+      <h1 style="font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;">
+        The Best Free Online<br/><span style="color:#c084fc;">Trivia Quiz</span> Site
       </h1>
-      <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Test your knowledge with fun quizzes across multiple categories. Challenge yourself, learn new facts, and compete for the top score.
+      <p style="font-size:clamp(14px,2.5vw,18px);color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 24px;">
+        Test your knowledge across {categories.length} categories. New quizzes added regularly — all completely free!
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/categories"
-          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-700 font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all text-lg"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" />
-          </svg>
-          Start Quiz
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <a href="/categories" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#a855f7,#7c3aed);color:white;font-weight:800;font-size:16px;border-radius:10px;box-shadow:0 6px 20px rgba(124,58,237,0.45);transition:transform 0.15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z" /></svg>
+          Start Playing Now
         </a>
-        <a
-          href="/about"
-          class="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl transition-all text-lg"
-        >
-          Learn More
+        <a href="#categories" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;font-weight:600;font-size:15px;border-radius:10px;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+          Browse Categories ↓
         </a>
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 max-w-3xl mx-auto">
-        {stats.map((stat) => (
-          <div class="text-center">
-            <div class="text-3xl sm:text-4xl font-extrabold text-white">{stat.value}</div>
-            <div class="text-sm text-blue-200 mt-1">{stat.label}</div>
+      <!-- Stats row -->
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+        {[['100+','Free Quizzes'],['8','Categories'],['50K+','Players'],['800+','Questions']].map(([val,lab]) => (
+          <div style="text-align:center;">
+            <div style="font-size:24px;font-weight:900;color:white;">{val}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;">{lab}</div>
           </div>
         ))}
       </div>
     </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20" aria-label="Quiz Categories">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Browse Categories</h2>
-      <p class="text-lg text-gray-500 max-w-xl mx-auto">
-        Choose from our wide range of trivia categories. Something for everyone!
-      </p>
-    </div>
-
-    <!-- In-Content Ad -->
-    <div class="flex justify-center mb-10">
-      <AdPlaceholder type="content" />
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {categories.map((cat) => (
-        <CategoryCard {...cat} />
-      ))}
-    </div>
-
-    <div class="text-center mt-10">
-      <a
-        href="/categories"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors shadow-md hover:shadow-lg"
-      >
-        View All Categories
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="bg-gray-50 py-16 sm:py-20" aria-label="How It Works">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">How It Works</h2>
-        <p class="text-lg text-gray-500">Start playing in just three easy steps.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          { step: '01', title: 'Choose a Category', desc: 'Browse our wide selection of trivia categories and pick the one you enjoy most.', icon: '🎯' },
-          { step: '02', title: 'Answer Questions', desc: 'Answer 10 carefully crafted questions within the time limit. Use your knowledge!', icon: '⚡' },
-          { step: '03', title: 'Get Your Score', desc: 'See your final score, review your answers, and share your results with friends.', icon: '🏆' },
-        ].map((item) => (
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-            <div class="text-4xl mb-4">{item.icon}</div>
-            <div class="text-xs font-bold text-blue-600 tracking-widest uppercase mb-2">Step {item.step}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-            <p class="text-gray-500 leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Leaderboard Ad -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <AdPlaceholder type="leaderboard" />
   </div>
 
-  <!-- Featured Blog Teasers -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" aria-label="Latest from Blog">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-      <div>
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Latest Articles</h2>
-        <p class="text-gray-500">Tips, trivia facts, and quiz guides for curious minds.</p>
+  <!-- Main 2-column layout -->
+  <div style="max-width:1200px;margin:0 auto;padding:28px 16px;display:grid;grid-template-columns:1fr;gap:24px;" id="categories" class="main-grid">
+
+    <!-- LEFT: Categories -->
+    <div>
+      <!-- Section title -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+        <div style="width:4px;height:28px;background:linear-gradient(180deg,#a855f7,#6c35d3);border-radius:2px;"></div>
+        <h2 style="font-size:20px;font-weight:800;color:#111827;">Quiz Categories</h2>
       </div>
-      <a href="/blog" class="text-blue-600 font-semibold hover:underline shrink-0">View all →</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        { title: 'The Best General Knowledge Quiz Questions for 2024', slug: 'best-general-knowledge-questions', date: 'Jun 1, 2024', category: 'General Knowledge', readTime: '5 min' },
-        { title: 'Top 20 Geography Quiz Questions You Must Try', slug: 'top-geography-quiz-questions', date: 'May 20, 2024', category: 'Geography', readTime: '4 min' },
-        { title: 'Science Quiz Questions Every Student Should Know', slug: 'science-quiz-for-students', date: 'May 8, 2024', category: 'Science', readTime: '6 min' },
-      ].map((post) => (
-        <a href={`/blog/${post.slug}`} class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden">
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 h-32 flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-300">
-            📖
-          </div>
-          <div class="p-5">
-            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
-              <span class="bg-blue-50 text-blue-600 font-medium px-2 py-0.5 rounded">{post.category}</span>
-              <span>{post.date}</span>
-              <span>·</span>
-              <span>{post.readTime} read</span>
+
+      <!-- Category grid -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;" class="cat-grid">
+        {categories.map((cat) => (
+          <a
+            href={`/quiz/${cat.slug}`}
+            style={`position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:${gradients[cat.slug] || 'linear-gradient(135deg,#6366f1,#4338ca)'};box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all 0.2s;text-decoration:none;`}
+            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.2)';"
+            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)';"
+          >
+            <!-- Icon centered -->
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:28px;">
+              <span style="font-size:clamp(36px,6vw,56px);filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));">{cat.icon}</span>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug">{post.title}</h3>
-          </div>
-        </a>
-      ))}
+            <!-- Dark overlay + name at bottom -->
+            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 100%);padding:24px 12px 12px;">
+              <div style="font-size:14px;font-weight:800;color:white;text-shadow:0 1px 4px rgba(0,0,0,0.5);">{cat.name}</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;">{cat.quizCount} questions</div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Ad between content -->
+      <div style="margin-top:24px;border:1px dashed #d1d5db;border-radius:8px;padding:14px;text-align:center;font-size:12px;color:#9ca3af;background:white;">
+        [Advertisement — Rectangle 300×250]
+      </div>
+
+      <!-- How to Play -->
+      <div style="margin-top:24px;background:white;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <h3 style="font-size:16px;font-weight:800;color:#111827;margin-bottom:16px;">How to Play</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          {[['🎯','Pick a Category','Choose from 8 quiz topics above'],['⚡','Answer Questions','10 questions, 30 seconds each'],['🏆','See Your Score','Get instant results and detailed explanations']].map(([icon,title,desc]) => (
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <div style="font-size:20px;flex-shrink:0;margin-top:1px;">{icon}</div>
+              <div>
+                <div style="font-size:14px;font-weight:700;color:#1f2937;">{title}</div>
+                <div style="font-size:13px;color:#6b7280;margin-top:2px;">{desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  </section>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="sidebar">
+      <!-- Popular Quizzes -->
+      <div style="background:white;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:18px;">
+        <h3 style="font-size:15px;font-weight:800;color:#111827;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:18px;">🔥</span> Popular Quizzes
+        </h3>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          {popularQuizzes.map((q, i) => (
+            <a
+              href={`/quiz/${q.slug}`}
+              style="display:flex;align-items:center;justify-content:space-between;padding:10px 8px;border-radius:8px;transition:background 0.15s;color:#1f2937;"
+              onmouseover="this.style.background='#f3f4f6'"
+              onmouseout="this.style.background='transparent'"
+            >
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span style="width:22px;height:22px;background:linear-gradient(135deg,#a855f7,#6c35d3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:white;flex-shrink:0;">{i + 1}</span>
+                <span style="font-size:13px;font-weight:600;">{q.name}</span>
+              </div>
+              <span style={`font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;flex-shrink:0;${q.difficulty === 'Easy' ? 'background:#dcfce7;color:#16a34a;' : q.difficulty === 'Hard' ? 'background:#fee2e2;color:#dc2626;' : 'background:#fef3c7;color:#d97706;'}`}>{q.difficulty}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Sidebar Ad -->
+      <div style="border:1px dashed #d1d5db;border-radius:8px;padding:14px;text-align:center;font-size:12px;color:#9ca3af;background:white;margin-bottom:18px;min-height:250px;display:flex;align-items:center;justify-content:center;">
+        [Advertisement — Sidebar 300×250]
+      </div>
+
+      <!-- Latest from Blog -->
+      <div style="background:white;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <h3 style="font-size:15px;font-weight:800;color:#111827;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+          <span style="font-size:18px;">📝</span> Latest Articles
+        </h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          {[
+            {title:'Best General Knowledge Quiz Questions for 2025',slug:'best-general-knowledge-questions',date:'Jun 1'},
+            {title:'Top 20 Geography Quiz Questions You Must Try',slug:'top-geography-quiz-questions',date:'May 20'},
+            {title:'Science Questions Every Student Should Know',slug:'science-quiz-for-students',date:'May 8'},
+          ].map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              style="display:flex;align-items:flex-start;gap:10px;padding:8px;border-radius:8px;transition:background 0.15s;color:#1f2937;"
+              onmouseover="this.style.background='#f9fafb'"
+              onmouseout="this.style.background='transparent'"
+            >
+              <div style="width:40px;height:40px;background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;">📖</div>
+              <div>
+                <div style="font-size:13px;font-weight:600;line-height:1.4;color:#1f2937;">{post.title}</div>
+                <div style="font-size:11px;color:#9ca3af;margin-top:3px;">{post.date}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+        <a href="/blog" style="display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:700;color:#7c3aed;padding:8px;border-radius:8px;transition:background 0.15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">View all articles →</a>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
 </Layout>
+
+<style>
+  @media (min-width: 900px) {
+    .main-grid {
+      grid-template-columns: 1fr 300px !important;
+    }
+    .cat-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+  @media (min-width: 600px) and (max-width: 899px) {
+    .cat-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+</style>
