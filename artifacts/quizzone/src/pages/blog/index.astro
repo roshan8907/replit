@@ -1,121 +1,101 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
 const posts = [
-  {
-    slug: 'best-general-knowledge-questions',
-    title: 'The Best General Knowledge Quiz Questions for 2024',
-    excerpt: 'Looking for the best general knowledge quiz questions? We\'ve compiled the ultimate list that\'s perfect for quiz nights, school competitions, or solo practice.',
-    date: 'June 1, 2024',
-    category: 'General Knowledge',
-    readTime: '5 min',
-    emoji: '🧠',
-  },
-  {
-    slug: 'top-geography-quiz-questions',
-    title: 'Top 20 Geography Quiz Questions You Must Try',
-    excerpt: 'Test your geography knowledge with these handpicked questions covering capitals, landmarks, oceans, mountains, and more from around the world.',
-    date: 'May 20, 2024',
-    category: 'Geography',
-    readTime: '4 min',
-    emoji: '🌍',
-  },
-  {
-    slug: 'science-quiz-for-students',
-    title: 'Science Quiz Questions Every Student Should Know',
-    excerpt: 'From biology and chemistry to physics and earth science — these science quiz questions cover the fundamentals every student should master.',
-    date: 'May 8, 2024',
-    category: 'Science',
-    readTime: '6 min',
-    emoji: '🔬',
-  },
-  {
-    slug: 'history-trivia-questions',
-    title: '25 History Trivia Questions That Will Test Your Knowledge',
-    excerpt: 'Dive into ancient civilizations, world wars, great explorers, and modern history with these carefully crafted trivia questions.',
-    date: 'April 25, 2024',
-    category: 'History',
-    readTime: '5 min',
-    emoji: '🏛️',
-  },
-  {
-    slug: 'sports-trivia-facts',
-    title: 'Amazing Sports Trivia Facts and Questions',
-    excerpt: 'Whether you\'re a sports fanatic or a casual fan, these sports trivia questions will put your knowledge of football, basketball, tennis, and more to the test.',
-    date: 'April 10, 2024',
-    category: 'Sports',
-    readTime: '4 min',
-    emoji: '⚽',
-  },
-  {
-    slug: 'food-and-drink-trivia',
-    title: 'Food & Drink Trivia: Questions from Around the World',
-    excerpt: 'How well do you know the world\'s cuisines? From obscure ingredients to famous dishes, these food and drink trivia questions will challenge even the most seasoned foodies.',
-    date: 'March 28, 2024',
-    category: 'Food & Drink',
-    readTime: '5 min',
-    emoji: '🍕',
-  },
+  { slug:'best-general-knowledge-questions', title:'The Best General Knowledge Quiz Questions for 2026', excerpt:"We've compiled the ultimate list that's perfect for quiz nights, school competitions, or solo practice.", date:'June 1, 2026', category:'General Knowledge', readTime:'5 min', emoji:'🧠' },
+  { slug:'top-geography-quiz-questions', title:'Top 20 Geography Quiz Questions You Must Try', excerpt:'Test your geography knowledge with handpicked questions covering capitals, landmarks, oceans, and mountains.', date:'May 20, 2026', category:'Geography', readTime:'4 min', emoji:'🌍' },
+  { slug:'science-quiz-for-students', title:'Science Quiz Questions Every Student Should Know', excerpt:'From biology and chemistry to physics — these science questions cover the fundamentals every student should master.', date:'May 8, 2026', category:'Science', readTime:'6 min', emoji:'🔬' },
+  { slug:'history-trivia-questions', title:'25 History Trivia Questions That Will Test Your Knowledge', excerpt:'Dive into ancient civilizations, world wars, and great explorers with these carefully crafted trivia questions.', date:'April 25, 2026', category:'History', readTime:'5 min', emoji:'🏛️' },
+  { slug:'sports-trivia-facts', title:'Amazing Sports Trivia Facts and Questions', excerpt:"Whether you're a sports fanatic or a casual fan, these questions will put your knowledge to the test.", date:'April 10, 2026', category:'Sports', readTime:'4 min', emoji:'⚽' },
+  { slug:'food-and-drink-trivia', title:'Food & Drink Trivia: Questions from Around the World', excerpt:'From obscure ingredients to famous dishes, these food and drink trivia questions will challenge even seasoned foodies.', date:'March 28, 2026', category:'Food & Drink', readTime:'5 min', emoji:'🍕' },
 ];
+
+const catColors: Record<string,string> = {
+  'General Knowledge':'#7c3aed','Geography':'#0891b2','Science':'#059669',
+  'History':'#d97706','Sports':'#dc2626','Food & Drink':'#db2777',
+};
 ---
 
 <Layout
   title="Trivia Quiz Blog — Tips, Questions & Guides | QuizZone"
-  description="Explore the QuizZone blog for trivia questions, quiz guides, and fascinating facts across science, history, geography, sports, and more."
+  description="Explore the QuizZone blog for trivia questions, quiz guides, and fascinating facts across science, history, geography, sports, food, and more."
   canonical="/blog"
 >
-  <section class="bg-gradient-to-br from-gray-50 to-blue-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Trivia Blog</h1>
-      <p class="text-lg text-gray-500 max-w-xl mx-auto">
-        Trivia questions, quiz guides, fascinating facts, and tips to improve your knowledge.
-      </p>
+  <Header />
+
+  <main style="max-width:700px;margin:0 auto;padding:16px 16px 32px;">
+
+    <!-- Back button -->
+    <a href="/" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#92733a;margin-bottom:14px;padding:8px 14px;background:rgba(255,255,255,0.6);border-radius:100px;">
+      ← Home
+    </a>
+
+    <!-- Hero -->
+    <div style="background:#1a1040;border-radius:20px;padding:28px 20px;text-align:center;margin-bottom:16px;">
+      <div style="font-size:44px;margin-bottom:10px;">📝</div>
+      <h1 style="font-size:24px;font-weight:900;color:white;margin-bottom:6px;">Trivia Blog</h1>
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);max-width:300px;margin:0 auto;">Quiz guides, trivia questions, and fascinating facts to keep your brain sharp.</p>
     </div>
-  </section>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-    <!-- Featured Post -->
-    <article class="mb-12">
-      <a href={`/blog/${posts[0].slug}`} class="group grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all overflow-hidden">
-        <div class="bg-gradient-to-br from-blue-100 to-indigo-100 h-56 md:h-full flex items-center justify-center text-8xl group-hover:scale-105 transition-transform duration-500 min-h-48">
-          {posts[0].emoji}
+    <!-- Featured post -->
+    <a href={`/blog/${posts[0].slug}`}
+      style="display:block;background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.1);margin-bottom:16px;transition:all 0.18s;text-decoration:none;"
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,0.15)';"
+      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.1)';">
+      <div style="background:linear-gradient(135deg,#1a1040,#4c1d95);height:130px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;">
+        {posts[0].emoji}
+        <span style="position:absolute;top:10px;left:10px;background:#ffe66d;color:#1a1040;font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;">✨ Featured</span>
+      </div>
+      <div style="padding:18px 20px 20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style={`font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;background:${catColors[posts[0].category]||'#7c3aed'}20;color:${catColors[posts[0].category]||'#7c3aed'};`}>{posts[0].category}</span>
+          <span style="font-size:11px;color:#9ca3af;">{posts[0].readTime} read</span>
         </div>
-        <div class="p-8 flex flex-col justify-center">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Featured</span>
-            <span class="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">{posts[0].category}</span>
-          </div>
-          <h2 class="text-2xl font-extrabold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug">{posts[0].title}</h2>
-          <p class="text-gray-500 leading-relaxed mb-5">{posts[0].excerpt}</p>
-          <div class="flex items-center gap-3 text-sm text-gray-400">
-            <span>{posts[0].date}</span>
-            <span>·</span>
-            <span>{posts[0].readTime} read</span>
-          </div>
-        </div>
-      </a>
-    </article>
+        <h2 style="font-size:16px;font-weight:800;color:#1a1040;line-height:1.4;margin-bottom:8px;">{posts[0].title}</h2>
+        <p style="font-size:13px;color:#6b7280;line-height:1.6;margin-bottom:10px;">{posts[0].excerpt}</p>
+        <div style="font-size:12px;color:#9ca3af;">{posts[0].date}</div>
+      </div>
+    </a>
 
-    <!-- Post Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Post grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;" class="blog-grid">
       {posts.slice(1).map((post) => (
-        <article>
-          <a href={`/blog/${post.slug}`} class="group block bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden h-full">
-            <div class="bg-gradient-to-br from-gray-50 to-blue-50 h-40 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
-              {post.emoji}
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">{post.category}</span>
-                <span class="text-xs text-gray-400">{post.readTime} read</span>
-              </div>
-              <h2 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-3">{post.title}</h2>
-              <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">{post.excerpt}</p>
-              <div class="mt-4 text-xs text-gray-400">{post.date}</div>
-            </div>
-          </a>
-        </article>
+        <a href={`/blog/${post.slug}`}
+          style="display:block;background:white;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.18s;text-decoration:none;"
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 20px rgba(0,0,0,0.13)';"
+          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)';">
+          <div style="background:linear-gradient(135deg,#1a1040,#2d1b69);height:90px;display:flex;align-items:center;justify-content:center;font-size:44px;">
+            {post.emoji}
+          </div>
+          <div style="padding:12px 14px 14px;">
+            <span style={`font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:${catColors[post.category]||'#7c3aed'}20;color:${catColors[post.category]||'#7c3aed'};display:inline-block;margin-bottom:6px;`}>{post.category}</span>
+            <h2 style="font-size:13px;font-weight:800;color:#1a1040;line-height:1.4;margin-bottom:6px;">{post.title}</h2>
+            <div style="font-size:11px;color:#9ca3af;">{post.date} · {post.readTime}</div>
+          </div>
+        </a>
       ))}
     </div>
+
+    <!-- CTA -->
+    <div style="background:#1a1040;border-radius:20px;padding:24px 20px;text-align:center;">
+      <h2 style="font-size:17px;font-weight:900;color:white;margin-bottom:8px;">Ready to test your knowledge?</h2>
+      <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:16px;">Jump into a quiz now — it's free and no sign-up needed.</p>
+      <a href="/categories"
+        style="display:inline-block;padding:14px 28px;background:#ffe66d;color:#1a1040;font-size:14px;font-weight:800;border-radius:100px;transition:background 0.15s;"
+        onmouseover="this.style.background='#ffd93d';" onmouseout="this.style.background='#ffe66d';">
+        🎯 Browse Quizzes
+      </a>
+    </div>
+
   </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  @media (min-width:540px){
+    .blog-grid{ grid-template-columns:repeat(3,1fr) !important; }
+  }
+</style>
