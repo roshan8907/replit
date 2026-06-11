@@ -630,5 +630,321 @@
         "explanation": "Pong (1972) by Atari is considered the first commercially successful video game, though 'Computer Space' predated it."
       }
     ]
+  },
+  "free-iq-test": {
+    "name": "Free IQ Test",
+    "icon": "🧠",
+    "color": "from-green-500 to-green-700",
+    "description": "Test your logical reasoning, pattern recognition, and problem-solving skills.",
+    "quizCount": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "If all Bloops are Razzles and all Razzles are Lazzles, then all Bloops are definitely…",
+        "options": ["Razzles only", "Lazzles", "Neither", "Both Razzles and Lazzles"],
+        "correct": 3,
+        "explanation": "Since all Bloops are Razzles (given), and all Razzles are Lazzles (given), by transitivity all Bloops must be both Razzles and Lazzles."
+      },
+      {
+        "id": 2,
+        "question": "What number comes next in the sequence: 2, 4, 8, 16, 32, …?",
+        "options": ["48", "60", "64", "72"],
+        "correct": 2,
+        "explanation": "Each number is doubled. 32 × 2 = 64."
+      },
+      {
+        "id": 3,
+        "question": "A clock shows 3:15. What is the angle between the hour and minute hands?",
+        "options": ["0°", "7.5°", "15°", "22.5°"],
+        "correct": 1,
+        "explanation": "At 3:15, the minute hand is at 90°. The hour hand moves 0.5° per minute, so at 3:15 it is at 97.5°. The difference is 7.5°."
+      },
+      {
+        "id": 4,
+        "question": "Which shape is the odd one out: Triangle, Pentagon, Hexagon, Circle?",
+        "options": ["Triangle", "Pentagon", "Hexagon", "Circle"],
+        "correct": 3,
+        "explanation": "A circle has no straight sides or corners, while the triangle, pentagon, and hexagon are all polygons with straight sides."
+      },
+      {
+        "id": 5,
+        "question": "If you rearrange the letters 'CIFAIPC', you get the name of…",
+        "options": ["A country", "An ocean", "A continent", "A river"],
+        "correct": 1,
+        "explanation": "Rearranging CIFAIPC gives PACIFIC — the Pacific Ocean."
+      },
+      {
+        "id": 6,
+        "question": "What is 15% of 200?",
+        "options": ["25", "30", "35", "40"],
+        "correct": 1,
+        "explanation": "15% of 200 = (15/100) × 200 = 30."
+      },
+      {
+        "id": 7,
+        "question": "A farmer has 17 sheep. All but 9 die. How many sheep are left?",
+        "options": ["8", "9", "17", "0"],
+        "correct": 1,
+        "explanation": "'All but 9 die' means 9 sheep survive. The answer is 9."
+      },
+      {
+        "id": 8,
+        "question": "Which word does NOT belong: Apple, Carrot, Banana, Mango?",
+        "options": ["Apple", "Carrot", "Banana", "Mango"],
+        "correct": 1,
+        "explanation": "Carrot is a vegetable; all the others are fruits."
+      },
+      {
+        "id": 9,
+        "question": "If it takes 5 machines 5 minutes to make 5 widgets, how long does it take 100 machines to make 100 widgets?",
+        "options": ["100 minutes", "50 minutes", "5 minutes", "1 minute"],
+        "correct": 2,
+        "explanation": "Each machine takes 5 minutes to make 1 widget. 100 machines each make 1 widget in 5 minutes, producing 100 widgets in 5 minutes total."
+      },
+      {
+        "id": 10,
+        "question": "What comes next: J, F, M, A, M, J, J, A, …?",
+        "options": ["B", "S", "O", "N"],
+        "correct": 1,
+        "explanation": "These are the first letters of the months: January, February, March, April, May, June, July, August — so next is S for September."
+      }
+    ]
+  },
+  "personality-quiz": {
+    "name": "Personality Quiz",
+    "icon": "🪞",
+    "color": "from-purple-500 to-purple-700",
+    "description": "Discover your personality traits with these fun self-awareness questions.",
+    "quizCount": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "You arrive at a party where you don't know many people. What do you do first?",
+        "options": ["Find a quiet corner and observe", "Immediately introduce yourself to strangers", "Look for the one person you know", "Head to the food table to look busy"],
+        "correct": 1,
+        "explanation": "Extroverts tend to dive right in and meet people, while introverts prefer to warm up slowly. Neither is wrong — it's all about your energy style!"
+      },
+      {
+        "id": 2,
+        "question": "Which superpower would you choose?",
+        "options": ["Telepathy — read minds", "Invisibility — go unnoticed", "Time travel — change the past", "Flight — freedom and perspective"],
+        "correct": 3,
+        "explanation": "Flight seekers are often free-spirited dreamers who crave perspective. Mind-readers are curious and empathetic. Time travelers are reflective planners."
+      },
+      {
+        "id": 3,
+        "question": "A friend cancels plans last minute. How do you feel?",
+        "options": ["Relieved — now you have free time", "Disappointed but understanding", "Annoyed — you had it all planned", "Worried something is wrong with them"],
+        "correct": 0,
+        "explanation": "Feeling relieved suggests an introverted or highly empathetic nature. Feeling annoyed often signals a structured, planning-focused personality."
+      },
+      {
+        "id": 4,
+        "question": "Which best describes your decision-making style?",
+        "options": ["I go with my gut feeling", "I make a pros and cons list", "I ask everyone I know for advice", "I sleep on it and decide later"],
+        "correct": 1,
+        "explanation": "Analytical personalities prefer structured decision-making, while intuitive types trust instinct. Both approaches have strengths in different situations."
+      },
+      {
+        "id": 5,
+        "question": "What kind of movie do you prefer?",
+        "options": ["Action-packed thriller", "Thoughtful drama", "Hilarious comedy", "Mind-bending sci-fi"],
+        "correct": 2,
+        "explanation": "Comedy lovers tend to be optimistic and social. Drama fans are often empathetic and deep thinkers. Sci-fi fans are usually imaginative and curious."
+      },
+      {
+        "id": 6,
+        "question": "Your ideal weekend is…",
+        "options": ["Exploring somewhere new", "Relaxing at home with a good book", "Seeing friends and family", "Tackling a fun project or hobby"],
+        "correct": 2,
+        "explanation": "Social weekends energize extroverts. Homebodies recharge in solitude. Adventurers seek novelty. Creators find fulfillment in making things."
+      },
+      {
+        "id": 7,
+        "question": "Which emoji best describes your energy on a Monday morning?",
+        "options": ["😴 Half asleep", "😤 Determined and ready", "😊 Genuinely happy", "😬 Nervous about the week"],
+        "correct": 1,
+        "explanation": "High-drive personalities embrace Mondays as a fresh start. Laid-back types ease in slowly. Your Monday energy often reflects your core motivation style."
+      },
+      {
+        "id": 8,
+        "question": "If you could have dinner with anyone in history, who type would you pick?",
+        "options": ["A world leader or president", "A great artist or writer", "A brilliant scientist", "An explorer or adventurer"],
+        "correct": 2,
+        "explanation": "Your choice often mirrors your core values: power/change, creativity, knowledge, or discovery. Scientists attract curious, logical thinkers."
+      },
+      {
+        "id": 9,
+        "question": "How do you handle stress best?",
+        "options": ["Exercise or physical activity", "Talking it out with someone", "Alone time and quiet", "Distracting yourself with entertainment"],
+        "correct": 0,
+        "explanation": "Physical activity is one of the most effective stress relievers. Your preference reveals how you process emotions — externally or internally."
+      },
+      {
+        "id": 10,
+        "question": "Your friend group would describe you as…",
+        "options": ["The funny one", "The dependable one", "The creative one", "The wise one"],
+        "correct": 1,
+        "explanation": "Being the dependable one reflects high conscientiousness — a trait linked to reliability, responsibility, and long-term success."
+      }
+    ]
+  },
+  "memory-challenge": {
+    "name": "Memory Challenge",
+    "icon": "💡",
+    "color": "from-teal-500 to-teal-700",
+    "description": "Put your memory and recall skills to the ultimate test.",
+    "quizCount": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What are the first five digits of Pi (π)?",
+        "options": ["3.14150", "3.14159", "3.14152", "3.14169"],
+        "correct": 1,
+        "explanation": "Pi begins 3.14159265… The first five decimal digits are 1, 4, 1, 5, 9."
+      },
+      {
+        "id": 2,
+        "question": "In what year did the Titanic sink?",
+        "options": ["1910", "1912", "1915", "1918"],
+        "correct": 1,
+        "explanation": "The RMS Titanic sank on April 15, 1912, after striking an iceberg during her maiden voyage."
+      },
+      {
+        "id": 3,
+        "question": "How many bones are in the adult human body?",
+        "options": ["196", "206", "216", "226"],
+        "correct": 1,
+        "explanation": "The adult human body has 206 bones. Babies are born with around 270-300 bones, which fuse as they grow."
+      },
+      {
+        "id": 4,
+        "question": "What are the three primary colors of light (RGB)?",
+        "options": ["Red, Yellow, Blue", "Red, Green, Blue", "Red, Green, Purple", "Orange, Green, Blue"],
+        "correct": 1,
+        "explanation": "The three primary colors of light are Red, Green, and Blue (RGB). Combining all three at full intensity produces white light."
+      },
+      {
+        "id": 5,
+        "question": "What is the name of the world's longest river?",
+        "options": ["Amazon", "Mississippi", "Nile", "Yangtze"],
+        "correct": 2,
+        "explanation": "The Nile River in Africa is generally considered the world's longest river at approximately 6,650 km (4,130 miles)."
+      },
+      {
+        "id": 6,
+        "question": "What is the atomic number of carbon?",
+        "options": ["4", "6", "8", "12"],
+        "correct": 1,
+        "explanation": "Carbon has an atomic number of 6, meaning it has 6 protons in its nucleus. It is the basis of all organic chemistry."
+      },
+      {
+        "id": 7,
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["Venus", "Jupiter", "Saturn", "Mars"],
+        "correct": 3,
+        "explanation": "Mars is called the Red Planet because of its reddish appearance, caused by iron oxide (rust) on its surface."
+      },
+      {
+        "id": 8,
+        "question": "In which country is the Great Wall located?",
+        "options": ["Japan", "India", "Mongolia", "China"],
+        "correct": 3,
+        "explanation": "The Great Wall of China stretches across northern China. It was built over many centuries starting around the 7th century BC."
+      },
+      {
+        "id": 9,
+        "question": "What is the speed of light (approximately)?",
+        "options": ["200,000 km/s", "300,000 km/s", "400,000 km/s", "500,000 km/s"],
+        "correct": 1,
+        "explanation": "The speed of light in a vacuum is approximately 299,792 km/s, commonly rounded to 300,000 km/s."
+      },
+      {
+        "id": 10,
+        "question": "What year was the Eiffel Tower completed?",
+        "options": ["1885", "1887", "1889", "1891"],
+        "correct": 2,
+        "explanation": "The Eiffel Tower was completed in 1889, built as the entrance arch for the 1889 World's Fair held in Paris."
+      }
+    ]
+  },
+  "speed-trivia": {
+    "name": "Speed Trivia",
+    "icon": "⚡",
+    "color": "from-orange-500 to-orange-700",
+    "description": "Fast-paced trivia — think quick and score big!",
+    "quizCount": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "options": ["London", "Berlin", "Paris", "Rome"],
+        "correct": 2,
+        "explanation": "Paris is the capital and largest city of France, known as the City of Light."
+      },
+      {
+        "id": 2,
+        "question": "How many players are on a basketball team on the court at one time?",
+        "options": ["4", "5", "6", "7"],
+        "correct": 1,
+        "explanation": "Each basketball team has 5 players on the court at any given time, for a total of 10 players during play."
+      },
+      {
+        "id": 3,
+        "question": "What color is a polar bear's fur?",
+        "options": ["White", "Yellow", "Transparent", "Light grey"],
+        "correct": 2,
+        "explanation": "Polar bear fur is actually transparent (hollow and colorless), not white. It appears white because it reflects visible light."
+      },
+      {
+        "id": 4,
+        "question": "What does 'www' stand for in a website URL?",
+        "options": ["World Wide Web", "Wide World Web", "World Web Wide", "Web World Wide"],
+        "correct": 0,
+        "explanation": "WWW stands for World Wide Web, the information system that operates over the internet using URLs, HTTP, and HTML."
+      },
+      {
+        "id": 5,
+        "question": "How many letters are in the English alphabet?",
+        "options": ["24", "25", "26", "27"],
+        "correct": 2,
+        "explanation": "The English alphabet has 26 letters, from A to Z."
+      },
+      {
+        "id": 6,
+        "question": "Which animal is the fastest on land?",
+        "options": ["Lion", "Horse", "Cheetah", "Greyhound"],
+        "correct": 2,
+        "explanation": "The cheetah is the fastest land animal, capable of reaching speeds up to 120 km/h (75 mph) in short bursts."
+      },
+      {
+        "id": 7,
+        "question": "What is H2O more commonly known as?",
+        "options": ["Salt", "Water", "Oxygen", "Hydrogen"],
+        "correct": 1,
+        "explanation": "H2O is the chemical formula for water — two hydrogen atoms bonded to one oxygen atom."
+      },
+      {
+        "id": 8,
+        "question": "On which continent is Egypt located?",
+        "options": ["Asia", "Europe", "Middle East", "Africa"],
+        "correct": 3,
+        "explanation": "Egypt is located in northeastern Africa, though part of the Sinai Peninsula extends into Asia."
+      },
+      {
+        "id": 9,
+        "question": "How many minutes are in one hour?",
+        "options": ["30", "45", "60", "90"],
+        "correct": 2,
+        "explanation": "There are 60 minutes in one hour, and 3,600 seconds."
+      },
+      {
+        "id": 10,
+        "question": "What instrument does a pianist play?",
+        "options": ["Violin", "Piano", "Guitar", "Harp"],
+        "correct": 1,
+        "explanation": "A pianist plays the piano, a keyboard instrument where pressing keys causes hammers to strike strings inside."
+      }
+    ]
   }
 }
