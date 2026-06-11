@@ -12,9 +12,13 @@ const currentPath = Astro.url.pathname;
 <header style="background:#1a1040;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
   <div style="max-width:700px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:58px;">
     <!-- Logo -->
-    <a href="/" style="display:flex;align-items:center;gap:10px;">
-      <div style="width:34px;height:34px;background:linear-gradient(135deg,#a855f7,#6c35d3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">❓</div>
-      <span style="font-size:20px;font-weight:900;color:white;">Quiz<span style="color:#ffe66d;">Zone</span></span>
+    <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <div style="width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,#ffe66d 0%,#f0b429 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(240,180,41,0.5),inset 0 1px 0 rgba(255,255,255,0.38);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1a1040">
+          <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM13 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+        </svg>
+      </div>
+      <span style="font-size:21px;font-weight:900;color:white;letter-spacing:-0.3px;">Quiz<span style="color:#ffe66d;">Zone</span></span>
     </a>
     <!-- Hamburger -->
     <button id="menu-btn" style="background:rgba(255,255,255,0.1);border:none;padding:8px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Menu">
@@ -33,9 +37,13 @@ const currentPath = Astro.url.pathname;
   <div style="max-width:700px;margin:0 auto;padding:16px;">
     <!-- Close row -->
     <div style="display:flex;align-items:center;justify-content:space-between;height:58px;margin-bottom:20px;">
-      <a href="/" style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;background:linear-gradient(135deg,#a855f7,#6c35d3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">❓</div>
-        <span style="font-size:20px;font-weight:900;color:white;">Quiz<span style="color:#ffe66d;">Zone</span></span>
+      <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <div style="width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,#ffe66d 0%,#f0b429 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(240,180,41,0.5),inset 0 1px 0 rgba(255,255,255,0.38);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#1a1040">
+            <path d="M11.07 12.85c.77-1.39 2.25-2.21 3.11-3.44.91-1.29.4-3.7-2.18-3.7-1.69 0-2.52 1.28-2.87 2.34L6.54 6.96C7.25 4.83 9.18 3 11.99 3c2.35 0 3.96 1.07 4.78 2.41.7 1.15 1.11 3.3.03 4.9-1.2 1.77-2.35 2.31-2.97 3.45-.25.46-.35.76-.35 2.24h-2.89c-.01-.78-.13-2.05.48-3.15zM13 20c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+          </svg>
+        </div>
+        <span style="font-size:21px;font-weight:900;color:white;letter-spacing:-0.3px;">Quiz<span style="color:#ffe66d;">Zone</span></span>
       </a>
       <button id="close-btn" style="background:rgba(255,255,255,0.1);border:none;padding:8px;border-radius:8px;cursor:pointer;">
         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
