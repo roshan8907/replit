@@ -1,0 +1,71 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+---
+<Layout title="Can You Pass This 6th Grade Quiz as an Adult? | QuizZone Blog" description="Most adults can't pass a basic 6th grade quiz. Can you? Test your knowledge and IQ with our free quiz!" canonical="/blog/6th-grade-quiz-for-adults">
+  <Header />
+  <main style="max-width:700px;margin:0 auto;padding:16px 16px 32px;">
+
+    <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#92733a;margin-bottom:14px;padding:8px 14px;background:rgba(255,255,255,0.6);border-radius:100px;">← Back to Blog</a>
+
+    <article>
+      <header style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;background:#ea580c20;color:#ea580c;">Challenge</span>
+          <span style="font-size:11px;color:#9ca3af;">May 12, 2026 · 2 min read</span>
+        </div>
+        <h1 style="font-size:22px;font-weight:900;color:#1a1040;line-height:1.4;margin-bottom:8px;">Can You Pass This 6th Grade Quiz as an Adult?</h1>
+      </header>
+
+      <div style="background:white;border-radius:16px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <p style="font-size:14px;color:#4b5563;line-height:1.7;">
+          It sounds easy, but you'd be surprised. A recent survey found that 65% of adults failed basic questions from a 6th grade curriculum — things like naming all the oceans, basic fractions, and elementary science. Your school knowledge fades, but your raw intelligence doesn't.
+        </p>
+      </div>
+
+      <!-- IQ Quiz CTA -->
+      <a href="/quiz/iq" style="display:block;background:linear-gradient(135deg,#ea580c,#f97316);border-radius:20px;padding:28px 20px;text-align:center;margin-bottom:16px;transition:transform 0.2s;box-shadow:0 8px 24px rgba(234,88,12,0.3);"
+        onmouseover="this.style.transform='translateY(-3px)';" onmouseout="this.style.transform='translateY(0)';">
+        <div style="font-size:44px;margin-bottom:10px;">📚</div>
+        <h2 style="font-size:20px;font-weight:900;color:white;margin-bottom:6px;">Forget School — What's Your Real IQ?</h2>
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:14px;">IQ measures raw brainpower, not what you memorized in class.</p>
+        <span style="display:inline-block;padding:12px 28px;background:#ffe66d;color:#1a1040;font-size:14px;font-weight:800;border-radius:100px;">🎯 Take the IQ Quiz Now</span>
+      </a>
+
+      <!-- Banner Ad 1 -->
+      <div style="background:white;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;min-height:100px;display:flex;align-items:center;justify-content:center;">
+        <div id="blog-ad-1">
+          <script is:inline type="text/javascript">
+            atOptions = {
+              'key' : 'YOUR_AD_KEY_1',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          </script>
+          <p style="font-size:11px;color:#d1d5db;">Advertisement</p>
+        </div>
+      </div>
+
+      <!-- Banner Ad 2 -->
+      <div style="background:white;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;min-height:100px;display:flex;align-items:center;justify-content:center;">
+        <div id="blog-ad-2">
+          <script is:inline type="text/javascript">
+            atOptions = {
+              'key' : 'YOUR_AD_KEY_2',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          </script>
+          <p style="font-size:11px;color:#d1d5db;">Advertisement</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+  <Footer />
+</Layout>

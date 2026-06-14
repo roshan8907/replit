@@ -4,15 +4,28 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
 const posts = [
-  { slug:'best-general-knowledge-questions', title:'The Best General Knowledge Quiz Questions for 2026', excerpt:"We've compiled the ultimate list that's perfect for quiz nights, school competitions, or solo practice.", date:'June 1, 2026', category:'General Knowledge', readTime:'5 min', emoji:'🧠' },
+  { slug:'brain-teasers-that-trick-you', title:'Brain Teasers That Trick Even Smart People', excerpt:'These brain teasers have stumped millions online. Can you solve them all?', date:'June 12, 2026', category:'Brain Teasers', readTime:'2 min', emoji:'🧠' },
+  { slug:'signs-of-high-intelligence', title:'7 Signs You Have Higher Intelligence Than You Think', excerpt:'Scientists say these 7 traits are linked to high intelligence. Do you have them?', date:'June 10, 2026', category:'Psychology', readTime:'2 min', emoji:'🔬' },
+  { slug:'riddles-only-geniuses-solve', title:'5 Riddles Only Geniuses Can Solve', excerpt:'These 5 riddles have stumped 90% of people online. Can you crack them?', date:'June 8, 2026', category:'Riddles', readTime:'2 min', emoji:'💡' },
+  { slug:'what-your-iq-score-means', title:'What Your IQ Score Actually Means', excerpt:'Ever wondered what IQ scores really mean? Learn the scale and where you stand.', date:'June 5, 2026', category:'IQ Facts', readTime:'2 min', emoji:'📊' },
+  { slug:'logic-puzzles-for-adults', title:'Logic Puzzles That Will Melt Your Brain', excerpt:'These logic puzzles for adults are harder than they look. Sharpen your mind!', date:'June 3, 2026', category:'Logic', readTime:'2 min', emoji:'⚡' },
+  { slug:'hardest-math-problem-online', title:'The Hardest Math Problem on the Internet Right Now', excerpt:'This math problem went viral because almost nobody gets it right.', date:'May 30, 2026', category:'Math', readTime:'2 min', emoji:'🧮' },
+  { slug:'why-smart-people-fail-quizzes', title:'Why Smart People Fail Simple Quizzes', excerpt:"It's a strange paradox — intelligent people often overthink easy questions.", date:'May 25, 2026', category:'Psychology', readTime:'2 min', emoji:'🤔' },
+  { slug:'facts-that-make-you-smarter', title:'10 Quick Facts That Will Make You Sound Smarter', excerpt:'Impress your friends with these 10 surprising facts about the world.', date:'May 18, 2026', category:'Fun Facts', readTime:'2 min', emoji:'🎓' },
+  { slug:'6th-grade-quiz-for-adults', title:'Can You Pass This 6th Grade Quiz as an Adult?', excerpt:'Most adults can\'t pass a basic 6th grade quiz. Can you?', date:'May 12, 2026', category:'Challenge', readTime:'2 min', emoji:'📚' },
+  { slug:'train-your-brain-like-a-champion', title:'How to Train Your Brain Like a Memory Champion', excerpt:'Memory champions use specific techniques to boost brainpower. Learn their secrets.', date:'May 5, 2026', category:'Brain Training', readTime:'2 min', emoji:'🏆' },
+  { slug:'best-general-knowledge-questions', title:'The Best General Knowledge Quiz Questions for 2026', excerpt:"We've compiled the ultimate list that's perfect for quiz nights, school competitions, or solo practice.", date:'June 1, 2026', category:'General Knowledge', readTime:'5 min', emoji:'🧩' },
   { slug:'top-geography-quiz-questions', title:'Top 20 Geography Quiz Questions You Must Try', excerpt:'Test your geography knowledge with handpicked questions covering capitals, landmarks, oceans, and mountains.', date:'May 20, 2026', category:'Geography', readTime:'4 min', emoji:'🌍' },
-  { slug:'science-quiz-for-students', title:'Science Quiz Questions Every Student Should Know', excerpt:'From biology and chemistry to physics — these science questions cover the fundamentals every student should master.', date:'May 8, 2026', category:'Science', readTime:'6 min', emoji:'🔬' },
+  { slug:'science-quiz-for-students', title:'Science Quiz Questions Every Student Should Know', excerpt:'From biology and chemistry to physics — these science questions cover the fundamentals every student should master.', date:'May 8, 2026', category:'Science', readTime:'6 min', emoji:'🔭' },
   { slug:'history-trivia-questions', title:'25 History Trivia Questions That Will Test Your Knowledge', excerpt:'Dive into ancient civilizations, world wars, and great explorers with these carefully crafted trivia questions.', date:'April 25, 2026', category:'History', readTime:'5 min', emoji:'🏛️' },
   { slug:'sports-trivia-facts', title:'Amazing Sports Trivia Facts and Questions', excerpt:"Whether you're a sports fanatic or a casual fan, these questions will put your knowledge to the test.", date:'April 10, 2026', category:'Sports', readTime:'4 min', emoji:'⚽' },
   { slug:'food-and-drink-trivia', title:'Food & Drink Trivia: Questions from Around the World', excerpt:'From obscure ingredients to famous dishes, these food and drink trivia questions will challenge even seasoned foodies.', date:'March 28, 2026', category:'Food & Drink', readTime:'5 min', emoji:'🍕' },
 ];
 
 const catColors: Record<string,string> = {
+  'Brain Teasers':'#7c3aed','Psychology':'#059669','Riddles':'#dc2626',
+  'IQ Facts':'#d97706','Logic':'#0891b2','Math':'#db2777',
+  'Fun Facts':'#2563eb','Challenge':'#ea580c','Brain Training':'#16a34a',
   'General Knowledge':'#7c3aed','Geography':'#0891b2','Science':'#059669',
   'History':'#d97706','Sports':'#dc2626','Food & Drink':'#db2777',
 };
