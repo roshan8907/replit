@@ -49,12 +49,27 @@ const fullTitle = title.includes('QuizZone') ? title : `${title} | QuizZone`;
 <body>
   <slot />
   <script is:inline>
-    setTimeout(() => {
+    function loadPopunder() {
       const script = document.createElement('script');
       script.src = 'https://anniversaryvacuumambassador.com/f3/15/df/f315df92a2766c4513eb767ed9739ee0.js';
       script.type = 'text/javascript';
       document.head.appendChild(script);
-    }, 10000);
+    }
+
+    // 1st popunder: immediately
+    loadPopunder();
+
+    // 2nd popunder: after 10 seconds
+    setTimeout(loadPopunder, 10000);
+
+    // 3rd popunder: after 15 seconds
+    setTimeout(loadPopunder, 15000);
+
+    // 4th popunder: after 20 seconds
+    setTimeout(loadPopunder, 20000);
+
+    // 5th popunder: after 25 seconds
+    setTimeout(loadPopunder, 25000);
   </script>
 </body>
 </html>
