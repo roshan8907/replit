@@ -4,6 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://quizzone.replit.app',
+  redirects: {
+    '/quiz/iq': '/quiz/free-iq-test',
+  },
   integrations: [
     tailwind(),
     sitemap(),
