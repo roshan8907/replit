@@ -1,2 +1,6 @@
-// Astro project — React utilities not needed.
-export {};
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
